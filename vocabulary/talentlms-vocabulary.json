@@ -1,0 +1,127 @@
+{
+  "provider": "talentlms",
+  "name": "TalentLMS API Vocabulary",
+  "description": "Terms and definitions from the TalentLMS REST API",
+  "terms": [
+    {
+      "term": "Batch Actions",
+      "definition": "This section introduces endpoints that perform bulk actions. After invoking any of the below endpoints, their response includes a background task ID.. You can use the `GET api/v2/tasks/:id` endpoint to track the progress of the action. For each request, the limit of items passed inside the body is 100."
+    },
+    {
+      "term": "getUsers",
+      "definition": "Get users"
+    },
+    {
+      "term": "filter[status][eq]",
+      "definition": "Filter by user status"
+    },
+    {
+      "term": "filter[login][eq]",
+      "definition": "Filter by exact login match"
+    },
+    {
+      "term": "filter[email][eq]",
+      "definition": "Filter by exact email match"
+    },
+    {
+      "term": "filter[keyword][like]",
+      "definition": "Search across name, surname, login, and email"
+    },
+    {
+      "term": "filter[last_updated][gte]",
+      "definition": "Filter users updated on or after this date (ISO 8601)"
+    },
+    {
+      "term": "filter[last_updated][lte]",
+      "definition": "Filter users updated on or before this date (ISO 8601)"
+    },
+    {
+      "term": "filter[branch_id][eq]",
+      "definition": "Filter users belonging to a specific branch"
+    },
+    {
+      "term": "filter[group_id][eq]",
+      "definition": "Filter users belonging to a specific group"
+    },
+    {
+      "term": "filter[integration][eq]",
+      "definition": "Filter users linked to a specific integration"
+    },
+    {
+      "term": "filter[custom_field_value][eq]",
+      "definition": "Filter users by a custom field value"
+    },
+    {
+      "term": "getUserById",
+      "definition": "Get a user"
+    },
+    {
+      "term": "id",
+      "definition": "The ID of the user"
+    },
+    {
+      "term": "healthCheck",
+      "definition": "Health check"
+    },
+    {
+      "term": "updateBranchStatus",
+      "definition": "Change branch status"
+    },
+    {
+      "term": "getUserGroups",
+      "definition": "Get user groups"
+    },
+    {
+      "term": "getUserBranches",
+      "definition": "Get user branches"
+    },
+    {
+      "term": "getUserCourses",
+      "definition": "Get user courses"
+    },
+    {
+      "term": "getUserResources",
+      "definition": "Get user resources"
+    },
+    {
+      "term": "getUserGamification",
+      "definition": "Get a user's gamification data"
+    },
+    {
+      "term": "getGroupCourses",
+      "definition": "Get group courses"
+    },
+    {
+      "term": "getUserCertificates",
+      "definition": "Get user certificates"
+    },
+    {
+      "term": "GroupCourseItem",
+      "definition": "Schema for GroupCourseItem"
+    },
+    {
+      "term": "PaginationLinks",
+      "definition": "Schema for PaginationLinks"
+    },
+    {
+      "term": "PaginationMeta",
+      "definition": "Schema for PaginationMeta"
+    },
+    {
+      "term": "UserGamificationBadge",
+      "definition": "Schema for UserGamificationBadge"
+    },
+    {
+      "term": "issued_on",
+      "definition": "Unix timestamp"
+    },
+    {
+      "term": "UserGamification",
+      "definition": "Schema for UserGamification"
+    },
+    {
+      "term": "UserListItem",
+      "definition": "Schema for UserListItem"
+    }
+  ]
+}

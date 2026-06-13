@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserGamificationBadge",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/json-schema/usergamificationbadge.json",
+  "required": [
+    "name",
+    "type",
+    "image_url",
+    "criteria",
+    "issued_on",
+    "badge_set_id"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "criteria": {
+      "type": "string"
+    },
+    "issued_on": {
+      "description": "Unix timestamp",
+      "type": "integer"
+    },
+    "badge_set_id": {
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserGamification",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/json-schema/usergamification.json",
+  "required": [
+    "points",
+    "level",
+    "badges"
+  ],
+  "properties": {
+    "points": {
+      "type": "integer"
+    },
+    "level": {
+      "type": "integer"
+    },
+    "badges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserGamificationBadge"
+      }
+    }
+  },
+  "type": "object"
+}

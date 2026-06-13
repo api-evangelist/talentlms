@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "getusercertificates-response-200",
+  "properties": {
+    "_data": {
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "required": [
+              "id",
+              "name"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

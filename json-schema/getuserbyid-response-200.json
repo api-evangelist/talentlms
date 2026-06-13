@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "getuserbyid-response-200",
+  "properties": {
+    "_data": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "login": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "credits": {
+          "type": "number",
+          "format": "float",
+          "nullable": true
+        },
+        "description": {
+          "properties": {
+            "html": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "nullable": true
+        },
+        "avatar": {
+          "properties": {
+            "default": {
+              "type": "string",
+              "format": "uri"
+            },
+            "sm": {
+              "type": "string",
+              "format": "uri",
+              "nullable": true
+            },
+            "md": {
+              "type": "string",
+              "format": "uri",
+              "nullable": true
+            },
+            "lg": {
+              "type": "string",
+              "format": "uri",
+              "nullable": true
+            },
+            "xl": {
+              "type": "string",
+              "format": "uri",
+              "nullable": true
+            }
+          },
+          "type": "object",
+          "nullable": true
+        },
+        "custom_fields": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string",
+                "nullable": true
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "text",
+                  "dropdown",
+                  "checkbox",
+                  "date"
+                ]
+              }
+            },
+            "type": "object"
+          }
+        },
+        "email_notifications": {
+          "type": "boolean"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "user_type": {
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "is_default": {
+              "type": "boolean",
+              "nullable": true
+            }
+          },
+          "type": "object"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "inactive"
+          ]
+        },
+        "deactivation_date": {
+          "type": "string",
+          "format": "date-time",
+          "nullable": true
+        },
+        "available_types": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "is_default": {
+                "type": "boolean",
+                "nullable": true
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

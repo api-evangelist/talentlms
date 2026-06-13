@@ -1,0 +1,2151 @@
+openapi: 3.0.0
+info:
+  title: 'TalentLMS Public API'
+  description: |-
+    TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly. It is organized around Representational State Transfer (REST) and is built to leverage standard HTTP features such as HTTP authentication and HTTP response codes, ensuring seamless integration. All API responses, including error messages, are consistently formatted in JSON for easy parsing and handling.
+
+    If your TalentLMS domain is called “samples”, then the API endpoint for your domain is [<code>https://samples.talentlms.com/api/v2</code>](https://samples.talentlms.com/api).
+
+    The current version of the API consumes data – information about users, courses, categories, groups, branches, and general details about your domain. Apart from that, via the API you can log in / sign up a user in your domain, enroll a user in a course, and much more. Please make sure, that you are accessing the URLs below, under HTTPs connections, otherwise, you will receive an error.
+
+    ## 🚀 **Getting Started Guide**
+
+    To start using the TalentLMS API, you must first [enable the API and generate a valid API](https://help.talentlms.com/hc/en-us/articles/9651527213468-Can-I-integrate-my-site-with-TalentLMS-Do-you-offer-an-API) key from the portal's settings (Account & Settings > Integrations > API).
+
+    **Keep in mind:**
+
+    - The pagination limit of each request is 100.
+        
+    - The API has rate and usage limits (e.g. 2000 requests per hour).
+        
+    - The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key (All calls must have an Accept: application/json header value).
+        
+    - In each request you must add the desired version of the API by adding the header option with the key `X-API-Version` and value (the format of the version must be `YYYY-MM-DD`).
+        
+    ## 🔐 Authentication
+
+    All of the requests require authentication. Our API uses the `API Key` authorization method, with key `X-API-Key` and value `your_api_key`. You can always fill these fields in the global variables or create an environment and insert them there.
+
+    ### ⛔️ Authentication error response
+
+    You will receive an HTTP 401 Unauthorized response code if the API key is missing, incorrectly formatted, or invalid.
+
+    ### ✅ API Responses
+
+    TalentLMS API uses HTTP response codes to indicate the success or failure of requests. Specifically, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided arguments (e.g. instead of an integer a string is supplied), and the 500 error code indicates an internal TalentLMS error. Please be aware that you will receive an error too, in case you try to access an endpoint via non HTTPs connection.
+
+    All errors return JSON consisting of a type (invalid_request_error or api_error) and a message describing the error.
+
+    | **Code** | **Description** |
+    | --- | --- |
+    | 200 | The request was executed properly and a JSON response is returned. |
+    | 204 | No content, and the operation was executed successfully. |
+    | 400 | A required parameter is missing or an invalid type (e.g. a string) was supplied instead of an integer. |
+    | 401 | Invalid API key provided. |
+    | 403 | API is not enabled for the specified domain or the domain is currently inactive. |
+    | 404 | The requested resource (e.g. user) does not exist. |
+    | 422 | Malformed response. |
+    | 429 | The API request rate limit has been exceeded. |
+    | 500 | Internal server error. |
+
+    ### 🛑 Rate Limits
+
+    Rate limits represent the maximum number of API requests that are permitted to be made  
+    per hour. These limits depend on your subscription plan and are as follows:
+
+    | **Plan** | **Limit** |
+    | --- | --- |
+    | Core | 2.000 |
+    | Grow | 10.000 |
+    | Pro | 10.000 |
+    | Small | 2.000 |
+    | Basic | 2.000 |
+    | Plus | 10.000 |
+    | Premium | 10.000 |
+    | Custom | Contact us so we can create a plan that fits your needs |
+
+    Regardless of the total API requests per hour provisioned per customer, each customer's API requests should not exceed the rate of 200 API calls per 5 seconds. The following headers are included in API responses to help manage rate limits:
+
+    - **`X-RateLimit-Limit`**: The maximum number of requests allowed in the current time window
+        
+    - **`X-RateLimit-Remaining`**: The number of requests left in the current window before hitting the limit
+        
+    ### 📄 Pagination
+
+    Our API supports pagination, splitting responses into size-customizable chunks of up to 100 items per request. You can navigate to the first, last, previous, or next page. The endpoints that support pagination return a list formatted as shown below:
+
+    ``` json
+    {
+            "self": "https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10",
+            "first": "https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10",
+            "last": "https://example.talentlms.com/api/v2/users?page[number]=4&page[size]=10",
+            "prev": "https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10",
+            "next": "https://example.talentlms.com/api/v2/users?page[number]=2&page[size]=10"
+    }
+
+     ```
+  version: 1.0.0
+servers:
+  -
+    url: 'https://your-domain.talentlms.com'
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+  schemas:
+    GroupCourseItem:
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 'Introduction to LMS'
+        code:
+          type: string
+          example: ADV-101
+          nullable: true
+      type: object
+    PaginationLinks:
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        last:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+      type: object
+    PaginationMeta:
+      properties:
+        pagination:
+          properties:
+            page:
+              type: integer
+              example: 1
+            page_size:
+              type: integer
+              example: 25
+            total_items:
+              type: integer
+            total_pages:
+              type: integer
+            total_results:
+              type: integer
+          type: object
+      type: object
+    UserGamificationBadge:
+      required:
+        - name
+        - type
+        - image_url
+        - criteria
+        - issued_on
+        - badge_set_id
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        image_url:
+          type: string
+        criteria:
+          type: string
+        issued_on:
+          description: 'Unix timestamp'
+          type: integer
+        badge_set_id:
+          type: integer
+      type: object
+    UserGamification:
+      required:
+        - points
+        - level
+        - badges
+      properties:
+        points:
+          type: integer
+        level:
+          type: integer
+        badges:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGamificationBadge'
+      type: object
+    UserListItem:
+      properties:
+        id:
+          type: integer
+          example: 1
+        login:
+          type: string
+          example: jdoe
+        name:
+          type: string
+          example: John
+        surname:
+          type: string
+          example: Doe
+        email:
+          type: string
+          example: jdoe@example.com
+        avatar:
+          properties:
+            default:
+              type: string
+            sm:
+              type: string
+            md:
+              type: string
+            lg:
+              type: string
+            xl:
+              type: string
+          type: object
+        timezone:
+          type: string
+          nullable: true
+        language:
+          type: string
+          nullable: true
+        type:
+          type: string
+          example: Learner-Instructor
+        registration:
+          type: string
+          format: date-time
+        last_login:
+          type: string
+          format: date-time
+          nullable: true
+        status:
+          type: string
+          example: active
+        last_updated:
+          type: string
+          format: date-time
+          nullable: true
+        integration_user_id:
+          type: string
+          nullable: true
+      type: object
+security:
+  -
+    apikeyAuth: []
+tags:
+  -
+    name: User
+  -
+    name: Course
+  -
+    name: Portal
+  -
+    name: Timeline
+  -
+    name: Group
+  -
+    name: Branch
+  -
+    name: Category
+  -
+    name: Unit
+  -
+    name: Task
+  -
+    name: 'Batch Actions'
+    description: 'This section introduces endpoints that perform bulk actions. After invoking any of the below endpoints, their response includes a background task ID.. You can use the `GET api/v2/tasks/:id` endpoint to track the progress of the action. For each request, the limit of items passed inside the body is 100.'
+  -
+    name: 'Learning Paths'
+paths:
+  /api/v2/users:
+    get:
+      tags:
+        - User
+      summary: 'Get users'
+      description: 'Returns a paginated list of users. Supports filtering by keyword, status, login, email, last_updated, branch_id, group_id, integration, and custom_field_value.'
+      operationId: getUsers
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: 'filter[status][eq]'
+          in: query
+          description: 'Filter by user status'
+          required: false
+          schema:
+            type: string
+            enum:
+              - active
+              - inactive
+        -
+          name: 'filter[login][eq]'
+          in: query
+          description: 'Filter by exact login match'
+          required: false
+          schema:
+            type: string
+        -
+          name: 'filter[email][eq]'
+          in: query
+          description: 'Filter by exact email match'
+          required: false
+          schema:
+            type: string
+        -
+          name: 'filter[keyword][like]'
+          in: query
+          description: 'Search across name, surname, login, and email'
+          required: false
+          schema:
+            type: string
+        -
+          name: 'filter[last_updated][gte]'
+          in: query
+          description: 'Filter users updated on or after this date (ISO 8601)'
+          required: false
+          schema:
+            type: string
+            format: date-time
+          example: '2024-01-01T00:00:00'
+        -
+          name: 'filter[last_updated][lte]'
+          in: query
+          description: 'Filter users updated on or before this date (ISO 8601)'
+          required: false
+          schema:
+            type: string
+            format: date-time
+          example: '2024-12-31T23:59:59'
+        -
+          name: 'filter[branch_id][eq]'
+          in: query
+          description: 'Filter users belonging to a specific branch'
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'filter[group_id][eq]'
+          in: query
+          description: 'Filter users belonging to a specific group'
+          required: false
+          schema:
+            type: integer
+        -
+          name: 'filter[integration][eq]'
+          in: query
+          description: 'Filter users linked to a specific integration'
+          required: false
+          schema:
+            type: string
+        -
+          name: 'filter[custom_field_value][eq]'
+          in: query
+          description: 'Filter users by a custom field value'
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { type: array, items: { $ref: '#/components/schemas/UserListItem' } }
+                  _links: { $ref: '#/components/schemas/PaginationLinks' }
+                  _meta: { $ref: '#/components/schemas/PaginationMeta' }
+                type: object
+    post:
+      tags:
+        - User
+      summary: 'Create a user'
+      description: |-
+        ### Create a user
+
+        This endpoint accepts a JSON body containing the properties of the user to be created (e.g., `name`, `email`, `password`, etc.). Validates all required fields and returns the newly created user object upon success.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: '<string|required>'
+                surname: '<string|required>'
+                login: '<string|required>'
+                email: '<email|required>'
+                timezone: '<timezone>'
+                locale: '<locale>'
+                email_notifications: '<boolean>'
+                user_type_id: '<integer>'
+                status: '<boolean>'
+                password: '<string|required>'
+                description: '<null|string>'
+                credits: '<null|float>'
+                deactivation_date: '<null|date>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/users/{id}':
+    get:
+      tags:
+        - User
+      summary: 'Get a user'
+      description: "Retrieves the complete profile details of a specific user. To successfully fetch a user, include the user's unique ID as a path parameter in the request URL. If the request is valid and the user exists, the API returns the full set of user details in the response."
+      operationId: getUserById
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the user'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { properties: { id: { type: integer }, login: { type: string }, name: { type: string }, surname: { type: string }, email: { type: string, format: email }, credits: { type: number, format: float, nullable: true }, description: { properties: { html: { type: string }, text: { type: string } }, type: object, nullable: true }, avatar: { properties: { default: { type: string, format: uri }, sm: { type: string, format: uri, nullable: true }, md: { type: string, format: uri, nullable: true }, lg: { type: string, format: uri, nullable: true }, xl: { type: string, format: uri, nullable: true } }, type: object, nullable: true }, custom_fields: { type: array, items: { properties: { id: { type: integer }, name: { type: string }, value: { type: string, nullable: true }, type: { type: string, enum: [text, dropdown, checkbox, date] } }, type: object } }, email_notifications: { type: boolean }, timezone: { type: string }, locale: { type: string }, user_type: { properties: { id: { type: integer }, name: { type: string }, is_default: { type: boolean, nullable: true } }, type: object }, status: { type: string, enum: [active, inactive] }, deactivation_date: { type: string, format: date-time, nullable: true }, available_types: { type: array, items: { properties: { id: { type: integer }, name: { type: string }, is_default: { type: boolean, nullable: true } }, type: object } } }, type: object }
+                type: object
+    patch:
+      tags:
+        - User
+      summary: 'Update a user'
+      description: |-
+        ### Update a user
+
+        Provide the user ID and updated fields to change user info and you will receive a 204 success message.
+
+        | Name | Type | Required | Description | Example Value |
+        | --- | --- | --- | --- | --- |
+        | name | string | true | Maximum character limit: 191 characters. | "John" |
+        | surname | string | true | Maximum character limit: 191 characters. | "Doe" |
+        | login | string | true | Maximum character limit: 191 characters. | "johndoe123" |
+        | email | email | true | It has to be a valid email format and structure. Maximum character limit: 191 characters. The email has to be unique. | "john@example.com" |
+        | description | string | true | Maximum character limit: 191 characters. | "A short bio" |
+        | timezone | string | true | Maximum character limit: 191 characters. | "UTC" |
+        | locale | string | true | Maximum character limit: 191 characters. | "en-US" |
+        | email_notifications | boolean | true | Enable or disable email notifications. | true |
+        | user_type_id | integer | true | ID representing the user's type. | 1 |
+        | active | boolean | true | Indicates if the account is active. | true |
+        | deactivation_date | date | true | Date when the account was deactivated. | "2024-01-01" |
+        | current_password | string | true | Maximum character limit: 191 characters. | "currentPass123" |
+        | password | string | true | Maximum character limit: 191 characters. | "newPass456" |
+        | credits | float | true | Amount of user credits. | 11 |
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: '<string|optional>'
+                surname: '<string|optional>'
+                login: '<string|optional>'
+                email: '<email|optional>'
+                description: '<string|optional>'
+                timezone: '<string|timezone|optional>'
+                locale: '<string|optional>'
+                email_notifications: '<boolean|optional>'
+                user_type_id: '<integer|optional>'
+                status: '<enum|required>'
+                deactivation_date: '<string|YYYY-MM-DD|optional>'
+                current_password: '<string|optional>'
+                password: '<string|optional>'
+                credits: '<integer|optional>'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          description: 'The ID of the user'
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - User
+      summary: 'Delete a user'
+      description: |-
+        ### Delete a user
+
+        Permanently deletes a specific user from your TalentLMS account. To successfully remove a user, include the user's unique ID as a path parameter in the request URL. If the request is valid and the user exists, the API deletes the user and returns a confirmation response.
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          description: 'The ID of the user'
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/course-progress:
+    get:
+      tags:
+        - User
+      summary: "Get user's course progress"
+      description: |-
+        ### Get user's course progress
+
+        Retrieve a user's progress in a specific course by providing both `user_id` and `course_id` as query parameters, and receive JSON data about their course progress, completion status, and score.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        -
+          name: user_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+        -
+          name: course_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - User
+      summary: "Reset user's course progress"
+      description: |-
+        ### Reset user's course progress
+
+        Provide user ID and course ID to reset the user's progress for a course, with a success (no content) or error response.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: user_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+        -
+          name: course_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/user-fields:
+    get:
+      tags:
+        - User
+      summary: 'Get user custom fields'
+      description: |-
+        ### Get user custom fields
+
+        Get all custom fields defined for users by making a simple authenticated GET request, and receive their definitions as a JSON array.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/unit-progress:
+    get:
+      tags:
+        - User
+      summary: "Get user's unit progress"
+      description: |-
+        ### Get user's unit progress
+
+        Retrieve a user's progress in a specific unit by supplying `user_id` and `unit_id` as query parameters, and receive JSON data about the unit's progress, such as status, score, and timestamps.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: user_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+        -
+          name: unit_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/users/:id/login':
+    get:
+      tags:
+        - User
+      summary: 'Login user'
+      description: |-
+        ### Login user
+
+        Logs in a specific user to the portal. To successfully log in a user, provide the user's unique ID in the request. If the request is valid and the user exists, the system initiates a new session and logs the user into the portal.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/users/:id/logout':
+    post:
+      tags:
+        - User
+      summary: 'Logout user'
+      description: |-
+        ### Logout user
+
+        Logs out a specific user from the portal by terminating their active session. To successfully log out a user, provide the user’s unique ID in the request. If the request is valid and the user exists, the system immediately invalidates the user’s current session and logs them out of the portal.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                next: ''
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/users/:id/online-status':
+    get:
+      tags:
+        - User
+      summary: 'Get user online status'
+      description: |-
+        ### Get user online status
+
+        Retrieves the current online status of a specific user. To check whether a user is currently online, provide the user’s unique ID in the request. If the request is valid and the user exists, the API returns the user’s online status.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/password-reset:
+    post:
+      tags:
+        - User
+      summary: "Reset user's password"
+      description: |-
+        ### Reset user's password
+
+        Reset a user's password by providing the user's login in the path and a base64-encoded redirect URL as a query parameter, returning a 204 No Content response upon successful password reset request.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                login: '<login>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        -
+          name: redirect_url
+          in: query
+          schema:
+            type: string
+          example: '<base64_encoded_url>'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/users/:email/username-recovery':
+    post:
+      tags:
+        - User
+      summary: 'Recover username'
+      description: |-
+        ### Recover username
+
+        The system sends an email to the user (using the specified attribute, such as their login or email), which includes their username; the user can provide a custom portal URL (`domain_url`), and if not provided, the system will use the default portal URL.
+      requestBody:
+        content: {  }
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: domain_url
+          in: query
+          schema:
+            type: string
+          example: '<base64_encoded_url>'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/courses:
+    get:
+      tags:
+        - Course
+      summary: 'List all courses'
+      description: |-
+        ### List all courses
+
+        Retrieves a paginated list of all courses in your TalentLMS account. Upon a successful request, the API returns a JSON response containing course objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets. You can optionally filter the response using course custom fields.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    post:
+      tags:
+        - Course
+      summary: 'Create course'
+      description: |-
+        ### Create course
+
+        Creates a new course in your TalentLMS account. To successfully create a course, provide the required attributes (such as the course name, code, and other relevant details) in the request body. If the request is valid, the API creates the course and returns the newly created course object, including its unique ID. This endpoint allows you to define course properties such as description, category, pricing, visibility, and other configuration settings depending on your account setup.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: '<string>'
+                code: '<string>'
+                description: '<string>'
+                category_id: '<integer>'
+                price: '<float>'
+                capacity: '<integer>'
+                level: '<integer>'
+                time_limit: '<integer>'
+                start_datetime: '<timestamp>'
+                expiration_datetime: '<timestamp>'
+                is_active: '<boolean>'
+                custom_fields:
+                  '<custom_field_name>': '<custom_field_value>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/courses/:id':
+    get:
+      tags:
+        - Course
+      summary: 'Get a course'
+      description: |-
+        ### Get a course
+
+        Retrieves the full details of a specific course. To successfully fetch a course, include the course’s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API returns detailed information about the course, including its metadata, settings, and related attributes.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Course
+      summary: 'Delete a course'
+      description: |-
+        ### Delete a course
+
+        Permanently deletes a specific course from your TalentLMS account. To successfully remove a course, include the course’s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API deletes the course and returns a 204 No Content response upon success.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/enrollments:
+    post:
+      tags:
+        - Course
+      summary: 'Enroll user to course'
+      description: |-
+        ### Enroll user to course
+
+        Enrolls a user into a specific course. To create an enrollment, provide the user’s unique ID using the user_id attribute and the course’s unique **I**D using the course_id attribute in the request body. If the request is valid and both the user and course exist, the API creates the enrollment and returns the enrollment details in the response.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                course_id: '<integer>'
+                user_id: '<integer>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Course
+      summary: 'Delete a user from a course'
+      description: |-
+        ### Delete a user from a course
+
+        Removes a user’s enrollment from a specific course. To successfully unenroll a user, provide the user’s unique ID using the `user_id` attribute and the course’s unique ID using the `course_id` attribute. If the request is valid and the enrollment exists, the API deletes the enrollment and removes the user’s access to the course.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/courses/:course_id/users/:user_id/goto':
+    get:
+      tags:
+        - Course
+      summary: 'Goto Course'
+      description: |-
+        ### Goto Course
+
+        Provided the course & user ID a goto url is returned for accessing the course with the specified ID. Optionally, the user is able to provide the encoded redirection urls when a user logs out or completes the course.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: logout_redirect
+          in: query
+          schema:
+            type: string
+          example: '<base64_encoded_url>'
+        -
+          name: course_completed_redirect
+          in: query
+          schema:
+            type: string
+          example: '<base64_encoded_url>'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/course-fields:
+    get:
+      tags:
+        - Course
+      summary: 'Get course custom fields'
+      description: |-
+        ### Get course custom fields
+
+        Retrieves a paginated list of all custom fields defined for courses. Upon a successful request, the API returns a JSON response containing the available custom course fields, including their configuration details and metadata. Results are returned in a paginated format to support efficient data retrieval.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/courses/:id/purchase':
+    post:
+      tags:
+        - Course
+      summary: 'Purchase a course'
+      description: |-
+        ### Purchase a course
+
+        Provided the course ID in the endpoint's path and the user ID in the request's body a course can be purchased for this specific user. Optionally, you can specify the redirection url if the purchase is cancelled or succeeded and you can also provide a coupon key.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_id: '<integer>'
+                cancel_path: '<string>'
+                return_path: '<string>'
+                coupon: '<string|null>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/statistics:
+    get:
+      tags:
+        - Portal
+      summary: "Get portal's statistics"
+      description: |-
+        ### Get portal's statistics
+
+        Retrieve platform-wide statistics, such as total users, courses, categories, groups, branches, and configuration details, by sending an authenticated GET request to this endpoint and receiving a report as a JSON object.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/timeline:
+    get:
+      tags:
+        - Timeline
+      summary: 'Get timeline'
+      description: |-
+        ### Get timeline
+
+        Retrieve a chronological list of key platform events and user activities, including details such as event type, user, timestamp, and related entities, as a JSON array.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/groups:
+    get:
+      tags:
+        - Group
+      summary: 'List all groups'
+      description: |-
+        ### List all groups
+
+        Retrieves a paginated list of all groups in your TalentLMS account. Upon a successful request, the API returns a JSON response containing group objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    post:
+      tags:
+        - Group
+      summary: 'Create a group'
+      description: |-
+        ### Create a group
+
+        Creates a new group in your TalentLMS account. To successfully create a group, provide the required group attributes in the request body. If the request is valid, the API creates the group and returns the newly created group object, including its unique ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: '<string>'
+                description: '<string>'
+                key: '<string>'
+                max_key_redemptions: '<integer>'
+                price: '<float>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/groups/:id':
+    get:
+      tags:
+        - Group
+      summary: 'Get a group'
+      description: |-
+        ### Get a group
+
+        Retrieves the full details of a specific group. To successfully fetch a group, include the group’s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API returns detailed information about the group, including its metadata, assigned users, and related configuration settings (where applicable).
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Group
+      summary: 'Delete a group'
+      description: |-
+        ### Delete a group
+
+        Permanently deletes a specific group from your TalentLMS account. To successfully remove a group, include the group’s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API deletes the group and returns a **204 No Content** response upon success.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/group-memberships:
+    post:
+      tags:
+        - Group
+      summary: 'Add a user to a group'
+      description: |-
+        ### Add a user to a group
+
+        Adds a user to a specific group. To create a group membership, provide the user’s unique ID using the user_id attribute and the group’s unique ID using the group_id attribute in the request body. If the request is valid and both the user and group exist, the API creates the membership and returns the corresponding group membership details.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                group_id: '<integer>'
+                user_id: '<integer>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Group
+      summary: 'Remove user from a group'
+      description: |-
+        ### Remove user from a group
+
+        Removes a user from a specific group. To delete a group membership, provide the user’s unique ID using the user_id attribute and the group’s unique ID using the group_id attribute. If the request is valid and the membership exists, the API removes the user from the specified group and returns a **204 No Content** response upon success.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/group-courses:
+    post:
+      tags:
+        - Group
+      summary: 'Add a course to a group'
+      description: |-
+        ### Add a course to a group
+
+        Associates a course with a specific group. To assign a course to a group, provide the course’s unique ID using the course_id attribute and the group’s unique ID using the group_id attribute in the request body. If the request is valid and both the course and group exist, the API creates the association and returns the corresponding group-course relationship details.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                group_id: '<integer>'
+                course_id: '<integer>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Group
+      summary: 'Remove course from group'
+      description: |-
+        ### Remove course from group
+
+        Removes a course from a specific group. To successfully remove a course from a group, provide the group's unique ID using the `group_id` attribute and the course's unique ID using the `course_id` attribute in the request body. If the request is valid and the association exists, the API deletes the group-course relationship and returns a 204 No Content response upon success.
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/branches:
+    get:
+      tags:
+        - Branch
+      summary: 'List all branches'
+      description: |-
+        ### List all branches
+
+        Retrieves a paginated list of all branches in your TalentLMS account. Upon a successful request, the API returns a JSON response containing branch objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    post:
+      tags:
+        - Branch
+      summary: 'Create a branch'
+      description: |-
+        ### Create a branch
+
+        Creates a new branch in your TalentLMS account. To successfully create a branch, provide the required branch attributes in the request body as a JSON object. If the request is valid, the API creates the branch and returns the newly created branch details, including its unique identifier.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: '<string>'
+                description: '<string>'
+                default_locale: '<string>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/branches/:id':
+    get:
+      tags:
+        - Branch
+      summary: 'Get a branch'
+      description: |-
+        ### Get a branch
+
+        Retrieves the full details of a specific branch. To successfully fetch a branch, include the branch’s unique ID as a path parameter in the request URL. If the request is valid and the branch exists, the API returns detailed information about the branch, including its configuration settings and metadata.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Branch
+      summary: 'Delete a branch'
+      description: |-
+        ### Delete a branch
+
+        Permanently deletes a specific branch from your TalentLMS account. To successfully remove a branch, include the branch’s unique ID as a path parameter in the request URL. If the request is valid and the branch exists, the API deletes the branch and returns a **204 No Content** response upon success.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/branch-users:
+    post:
+      tags:
+        - Branch
+      summary: 'Add user to branch'
+      description: |-
+        ### Add a user to a branch
+
+        Associates a user with a specific branch. To successfully add a user to a branch, provide the branch’s unique ID using the branch_id attribute and the user’s unique ID using the user_id attribute in the request body. If the request is valid and both the user and branch exist, the API creates the association and returns the corresponding branch-user relationship details.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                branch_id: '<integer>'
+                user_id: '<integer>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Branch
+      summary: 'Remove user from branch'
+      description: |-
+        ### Remove user from branch
+
+        Removes a user from a specific branch. To successfully remove a user from a branch, provide the branch’s unique ID using the branch_id attribute and the user’s unique ID using the user_id attribute. If the request is valid and the association exists, the API deletes the branch-user relationship and returns a **204 No Content** response upon success.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/branch-courses:
+    post:
+      tags:
+        - Branch
+      summary: 'Add course to branch'
+      description: |-
+        ### Add course to branch
+
+        Associates a course with a specific branch. To successfully assign a course to a branch, provide the course’s unique ID using the course_id attribute and the branch’s unique ID using the branch_id attribute in the request body. If the request is valid and both the course and branch exist, the API creates the association and returns the corresponding branch-course relationship details.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                branch_id: '<integer>'
+                course_id: '<integer>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - Branch
+      summary: 'Remove course from branch'
+      description: |-
+        ### Remove course from branch
+
+        Removes a course from a specific branch. To successfully remove a course from a branch, provide the course's unique ID using the `course_id` attribute and the branch's unique ID using the `branch_id` attribute in the request body. If the request is valid and the association exists, the API deletes the branch-course relationship and returns a 204 No Content response upon success.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/categories:
+    get:
+      tags:
+        - Category
+      summary: 'List all categories'
+      description: |-
+        ### List all categories
+
+        Retrieves a paginated list of all categories in your TalentLMS account. Upon a successful request, the API returns a JSON response containing category objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/categories/:id':
+    get:
+      tags:
+        - Category
+      summary: 'Get a category'
+      description: |-
+        ### Get a category
+
+        Retrieves the full details of a specific category. To successfully fetch a category, include the category’s unique ID as a path parameter in the request URL. If the request is valid and the category exists, the API returns detailed information about the category, including its metadata and related configuration settings.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/categories/:id/purchase':
+    post:
+      tags:
+        - Category
+      summary: 'Purchase a course category'
+      description: |-
+        ### Purchase a course category
+
+        Provided the category ID in the endpoint's path and the user ID in the request's body a category can be purchased for this specific user. Optionally, you can specify the redirection url if the purchase is cancelled or succeeded and you can also provide a coupon key.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_id: '<integer>'
+                cancel_path: '<string>'
+                return_path: '<string>'
+                coupon: null
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/results:
+    get:
+      tags:
+        - Unit
+      summary: "Get user's test/survey answers"
+      description: |-
+        ### Get user's test/survey answers
+
+        Retrieve detailed test/survey results for a specific user and unit, including status, score, completion date, and a breakdown of answers for each question.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: unit_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+        -
+          name: user_id
+          in: query
+          schema:
+            type: string
+          example: '<integer>'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/units/:id/sessions':
+    get:
+      tags:
+        - Unit
+      summary: "Get ILT unit's sessions"
+      description: |-
+        ### Get ILT unit's sessions
+
+        Retrieves the scheduled sessions of a specific Instructor-Led Training (ILT) unit. To successfully fetch session details, include the ILT unit’s unique ID as a path parameter in the request URL. If the request is valid and the unit exists, the API returns a JSON response containing information about all associated sessions, including their schedule and related metadata.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/tasks/:id':
+    get:
+      tags:
+        - Task
+      summary: "Get task's status and progress"
+      description: |-
+        ### Get task's status and progress
+
+        Retrieves the current status and progress of a background process task. To successfully fetch task details, include the task’s unique ID as a path parameter in the request URL. If the request is valid and the task exists, the API returns information about the task’s execution status and completion progress. This endpoint is typically used to monitor long-running or asynchronous operations.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/batch/courses:
+    post:
+      tags:
+        - 'Batch Actions'
+      summary: 'Upsert Courses'
+      description: |-
+        ### Upsert courses
+
+        Provide the course name, code, description and status to create new courses or update an existing ones. You can update a course by providing either its code or id.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                courses:
+                  - { name: '<string>', code: '<string>', description: '<string>', is_active: '<boolean>' }
+                  - { name: '<string>', code: '<string>', description: '<string>', is_active: '<boolean>' }
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/batch/enrollments:
+    post:
+      tags:
+        - 'Batch Actions'
+      summary: 'Course Enrollments'
+      description: |-
+        ### Course Enrollments
+
+        Creates multiple course enrollments in a single request.
+
+        Use this endpoint to mass assign users to courses by providing an array of course_id and user_id pairs in the request body. If the request is valid, the API processes each enrollment and returns the corresponding results.
+
+        This endpoint is ideal for bulk operations and large-scale user-course assignments.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                enrollments:
+                  - { course_id: '<integer>', user_id: '<integer>' }
+                  - { course_id: '<integer>', user_id: '<integer>' }
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/batch/users:
+    post:
+      tags:
+        - 'Batch Actions'
+      summary: 'Upsert Users'
+      description: |-
+        Creates or updates multiple users in a single request.
+
+        Use this endpoint to mass create or update users by providing an array of user objects in the request body. Each object may include core user attributes (such as login, name, email, and status) as well as custom user fields. If a user already exists, the body needs to have the corresponding id and their information will be updated. If the user does not exist, a new user is created.
+
+        This endpoint is ideal for bulk user provisioning, HRIS synchronization, and large-scale user updates, including custom field updates.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                users:
+                  - { login: '<string>', name: '<string>', surname: '<string>', email: '<string>', status: '<string>', custom_field_1: '<string>', custom_field_2: '<string>', custom_field_4: '<string>' }
+      parameters:
+        -
+          name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        -
+          name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/learning-paths:
+    get:
+      tags:
+        - 'Learning Paths'
+      summary: 'Get learning paths'
+      description: |-
+        ### **List all learning paths**
+
+          
+        Retrieves a paginated list of all learning paths in your TalentLMS account. Upon a successful request, the API returns a JSON response containing learning path objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets. You can optionally filter the response by keyword or status.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  '/api/v2/learning-paths/:id':
+    get:
+      tags:
+        - 'Learning Paths'
+      summary: 'Get learning path'
+      description: |-
+        ### Get a learning path
+
+        Retrieves the details of a specific learning path. To successfully fetch a learning path, include the learning path's unique ID as a path parameter in the request URL. If the request is valid and the learning path exists, the API returns the full set of learning path details in the response.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/learning-paths/enrollments:
+    post:
+      tags:
+        - 'Learning Paths'
+      summary: 'Enroll a user to a learning path'
+      description: |-
+        ### Enroll user to learning path
+
+        Enrolls a user into a specific learning path. To create an enrollment, provide the user's unique ID using the `user_id` attribute and the learning path's unique ID using the `learning_path_id` attribute in the request body. If the request is valid and both the user and learning path exist, the API creates the enrollment and returns the enrollment details in the response.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_id: '<integer>'
+                learning_path_id: '<integer>'
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+    delete:
+      tags:
+        - 'Learning Paths'
+      summary: 'Remove a user from a learning path'
+      description: |-
+        ### Remove user from learning path
+
+        Removes a user's enrollment from a specific learning path. To successfully unenroll a user, provide the user's unique ID using the `user_id` attribute and the learning path's unique ID using the `learning_path_id` attribute in the request body. If the request is valid and the enrollment exists, the API deletes the enrollment and removes the user's access to the learning path.
+      parameters:
+        -
+          name: X-API-Version
+          in: header
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json: {  }
+  /api/v2/health:
+    get:
+      tags:
+        - Portal
+      summary: 'Health check'
+      operationId: healthCheck
+      responses:
+        200:
+          description: OK
+      security: []
+  '/api/v2/branches/{id}/status':
+    put:
+      tags:
+        - Branch
+      summary: 'Change branch status'
+      description: "### Change branch status. Activates or deactivates a specific branch. To update the branch status, include the branch's unique ID as a path parameter in the request URL and provide a boolean value for the is_active attribute in the request body. If the request is valid and the branch exists, the API updates the branch's status accordingly and returns the updated branch details."
+      operationId: updateBranchStatus
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the branch'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+        -
+          name: Content-Type
+          in: header
+          required: false
+          schema:
+            type: string
+          example: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                is_active:
+                  type: boolean
+                  example: true
+              type: object
+      responses:
+        204:
+          description: 'Successful response'
+  '/api/v2/users/{id}/groups':
+    get:
+      tags:
+        - User
+      summary: 'Get user groups'
+      description: "Retrieves the groups assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of groups with their ID and name."
+      operationId: getUserGroups
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the user'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { properties: { groups: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } } }, type: object }
+                type: object
+  '/api/v2/users/{id}/branches':
+    get:
+      tags:
+        - User
+      summary: 'Get user branches'
+      description: "Retrieves the branches assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of branches with their ID and name."
+      operationId: getUserBranches
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the user'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { properties: { branches: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } } }, type: object }
+                type: object
+  '/api/v2/users/{id}/courses':
+    get:
+      tags:
+        - User
+      summary: 'Get user courses'
+      description: "Retrieves the courses assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of courses with their ID and name."
+      operationId: getUserCourses
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the user'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { properties: { courses: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } } }, type: object }
+                type: object
+  '/api/v2/users/{id}/resources':
+    get:
+      tags:
+        - User
+      summary: 'Get user resources'
+      description: 'Retrieves all resources assigned to a specific user: branches, groups, courses, and certificates.'
+      operationId: getUserResources
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the user'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { properties: { branches: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } }, groups: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } }, courses: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } }, certificates: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } } }, type: object }
+                type: object
+  '/api/v2/users/{id}/gamification':
+    get:
+      tags:
+        - User
+      summary: "Get a user's gamification data"
+      description: |-
+        ### Returns a user's gamification sub-resource (points, level, and badges).
+             *     Returns 404 when gamification is disabled for the portal, or when the user does not exist.
+             *     Each badge contains: name, type, image_url, criteria, issued_on (unix timestamp) and badge_set_id.
+      operationId: getUserGamification
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the user'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { $ref: '#/components/schemas/UserGamification' }
+                type: object
+        404:
+          description: 'Gamification is not enabled or user not found'
+  '/api/v2/groups/{id}/courses':
+    get:
+      tags:
+        - Group
+      summary: 'Get group courses'
+      description: 'Returns a paginated list of courses assigned to a group.'
+      operationId: getGroupCourses
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the group'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        404:
+          description: 'Group not found'
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { type: array, items: { $ref: '#/components/schemas/GroupCourseItem' } }
+                  _links: { $ref: '#/components/schemas/PaginationLinks' }
+                  _meta: { $ref: '#/components/schemas/PaginationMeta' }
+                type: object
+  '/api/v2/users/{id}/certificates':
+    get:
+      tags:
+        - User
+      summary: 'Get user certificates'
+      description: "Retrieves the certificates earned by a specific user. Include the user's unique ID as a path parameter. Returns a list of certificates with their ID and name."
+      operationId: getUserCertificates
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'The ID of the user'
+          required: true
+          schema:
+            type: integer
+        -
+          name: X-API-Version
+          in: header
+          required: false
+          schema:
+            type: string
+          example: '{{apiVersion}}'
+      responses:
+        200:
+          description: 'Successful response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  _data: { properties: { certificates: { type: array, items: { required: [id, name], properties: { id: { type: integer }, name: { type: string } }, type: object } } }, type: object }
+                type: object

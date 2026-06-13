@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserListItem",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/json-schema/userlistitem.json",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "login": {
+      "type": "string",
+      "example": "jdoe"
+    },
+    "name": {
+      "type": "string",
+      "example": "John"
+    },
+    "surname": {
+      "type": "string",
+      "example": "Doe"
+    },
+    "email": {
+      "type": "string",
+      "example": "jdoe@example.com"
+    },
+    "avatar": {
+      "properties": {
+        "default": {
+          "type": "string"
+        },
+        "sm": {
+          "type": "string"
+        },
+        "md": {
+          "type": "string"
+        },
+        "lg": {
+          "type": "string"
+        },
+        "xl": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "timezone": {
+      "type": "string",
+      "nullable": true
+    },
+    "language": {
+      "type": "string",
+      "nullable": true
+    },
+    "type": {
+      "type": "string",
+      "example": "Learner-Instructor"
+    },
+    "registration": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_login": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "status": {
+      "type": "string",
+      "example": "active"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true
+    },
+    "integration_user_id": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "type": "object"
+}

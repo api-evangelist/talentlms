@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GroupCourseItem",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/json-schema/groupcourseitem.json",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": 1
+    },
+    "name": {
+      "type": "string",
+      "example": "Introduction to LMS"
+    },
+    "code": {
+      "type": "string",
+      "example": "ADV-101",
+      "nullable": true
+    }
+  },
+  "type": "object"
+}

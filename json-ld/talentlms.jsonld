@@ -1,0 +1,465 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "talentlms": "https://developers.talentlms.io/",
+    "api": "https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/openapi/talentlms-openapi.yaml"
+  },
+  "@type": "WebAPI",
+  "@id": "https://developers.talentlms.io/",
+  "name": "TalentLMS Public API",
+  "description": "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly. It is organized around Representational State Transfer (REST) and is built to leverage standard HTTP features such as HTTP authentication and HTTP response codes, ensuring seamless integration. All API responses, including error messages, are consistently formatted in JSON for easy parsing and handling.",
+  "version": "1.0.0",
+  "url": "https://developers.talentlms.io/",
+  "termsOfService": "",
+  "provider": {
+    "@type": "Organization",
+    "name": "TalentLMS",
+    "url": "https://www.talentlms.com"
+  },
+  "documentation": "https://developers.talentlms.io/",
+  "license": "",
+  "endpointUrl": "https://your-domain.talentlms.com",
+  "availableChannel": [
+    {
+      "@type": "ServiceChannel",
+      "name": "getUsers",
+      "description": "Get users",
+      "serviceUrl": "/api/v2/users",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/users",
+      "description": "Create a user",
+      "serviceUrl": "/api/v2/users",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getUserById",
+      "description": "Get a user",
+      "serviceUrl": "/api/v2/users/{id}",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "patch /api/v2/users/{id}",
+      "description": "Update a user",
+      "serviceUrl": "/api/v2/users/{id}",
+      "httpMethod": "PATCH"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/users/{id}",
+      "description": "Delete a user",
+      "serviceUrl": "/api/v2/users/{id}",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/course-progress",
+      "description": "Get user's course progress",
+      "serviceUrl": "/api/v2/course-progress",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/course-progress",
+      "description": "Reset user's course progress",
+      "serviceUrl": "/api/v2/course-progress",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/user-fields",
+      "description": "Get user custom fields",
+      "serviceUrl": "/api/v2/user-fields",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/unit-progress",
+      "description": "Get user's unit progress",
+      "serviceUrl": "/api/v2/unit-progress",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/users/:id/login",
+      "description": "Login user",
+      "serviceUrl": "/api/v2/users/:id/login",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/users/:id/logout",
+      "description": "Logout user",
+      "serviceUrl": "/api/v2/users/:id/logout",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/users/:id/online-status",
+      "description": "Get user online status",
+      "serviceUrl": "/api/v2/users/:id/online-status",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/password-reset",
+      "description": "Reset user's password",
+      "serviceUrl": "/api/v2/password-reset",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/users/:email/username-recovery",
+      "description": "Recover username",
+      "serviceUrl": "/api/v2/users/:email/username-recovery",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/courses",
+      "description": "List all courses",
+      "serviceUrl": "/api/v2/courses",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/courses",
+      "description": "Create course",
+      "serviceUrl": "/api/v2/courses",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/courses/:id",
+      "description": "Get a course",
+      "serviceUrl": "/api/v2/courses/:id",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/courses/:id",
+      "description": "Delete a course",
+      "serviceUrl": "/api/v2/courses/:id",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/enrollments",
+      "description": "Enroll user to course",
+      "serviceUrl": "/api/v2/enrollments",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/enrollments",
+      "description": "Delete a user from a course",
+      "serviceUrl": "/api/v2/enrollments",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/courses/:course_id/users/:user_id/goto",
+      "description": "Goto Course",
+      "serviceUrl": "/api/v2/courses/:course_id/users/:user_id/goto",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/course-fields",
+      "description": "Get course custom fields",
+      "serviceUrl": "/api/v2/course-fields",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/courses/:id/purchase",
+      "description": "Purchase a course",
+      "serviceUrl": "/api/v2/courses/:id/purchase",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/statistics",
+      "description": "Get portal's statistics",
+      "serviceUrl": "/api/v2/statistics",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/timeline",
+      "description": "Get timeline",
+      "serviceUrl": "/api/v2/timeline",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/groups",
+      "description": "List all groups",
+      "serviceUrl": "/api/v2/groups",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/groups",
+      "description": "Create a group",
+      "serviceUrl": "/api/v2/groups",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/groups/:id",
+      "description": "Get a group",
+      "serviceUrl": "/api/v2/groups/:id",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/groups/:id",
+      "description": "Delete a group",
+      "serviceUrl": "/api/v2/groups/:id",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/group-memberships",
+      "description": "Add a user to a group",
+      "serviceUrl": "/api/v2/group-memberships",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/group-memberships",
+      "description": "Remove user from a group",
+      "serviceUrl": "/api/v2/group-memberships",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/group-courses",
+      "description": "Add a course to a group",
+      "serviceUrl": "/api/v2/group-courses",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/group-courses",
+      "description": "Remove course from group",
+      "serviceUrl": "/api/v2/group-courses",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/branches",
+      "description": "List all branches",
+      "serviceUrl": "/api/v2/branches",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/branches",
+      "description": "Create a branch",
+      "serviceUrl": "/api/v2/branches",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/branches/:id",
+      "description": "Get a branch",
+      "serviceUrl": "/api/v2/branches/:id",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/branches/:id",
+      "description": "Delete a branch",
+      "serviceUrl": "/api/v2/branches/:id",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/branch-users",
+      "description": "Add user to branch",
+      "serviceUrl": "/api/v2/branch-users",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/branch-users",
+      "description": "Remove user from branch",
+      "serviceUrl": "/api/v2/branch-users",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/branch-courses",
+      "description": "Add course to branch",
+      "serviceUrl": "/api/v2/branch-courses",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/branch-courses",
+      "description": "Remove course from branch",
+      "serviceUrl": "/api/v2/branch-courses",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/categories",
+      "description": "List all categories",
+      "serviceUrl": "/api/v2/categories",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/categories/:id",
+      "description": "Get a category",
+      "serviceUrl": "/api/v2/categories/:id",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/categories/:id/purchase",
+      "description": "Purchase a course category",
+      "serviceUrl": "/api/v2/categories/:id/purchase",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/results",
+      "description": "Get user's test/survey answers",
+      "serviceUrl": "/api/v2/results",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/units/:id/sessions",
+      "description": "Get ILT unit's sessions",
+      "serviceUrl": "/api/v2/units/:id/sessions",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/tasks/:id",
+      "description": "Get task's status and progress",
+      "serviceUrl": "/api/v2/tasks/:id",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/batch/courses",
+      "description": "Upsert Courses",
+      "serviceUrl": "/api/v2/batch/courses",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/batch/enrollments",
+      "description": "Course Enrollments",
+      "serviceUrl": "/api/v2/batch/enrollments",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/batch/users",
+      "description": "Upsert Users",
+      "serviceUrl": "/api/v2/batch/users",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/learning-paths",
+      "description": "Get learning paths",
+      "serviceUrl": "/api/v2/learning-paths",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "get /api/v2/learning-paths/:id",
+      "description": "Get learning path",
+      "serviceUrl": "/api/v2/learning-paths/:id",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "post /api/v2/learning-paths/enrollments",
+      "description": "Enroll a user to a learning path",
+      "serviceUrl": "/api/v2/learning-paths/enrollments",
+      "httpMethod": "POST"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "delete /api/v2/learning-paths/enrollments",
+      "description": "Remove a user from a learning path",
+      "serviceUrl": "/api/v2/learning-paths/enrollments",
+      "httpMethod": "DELETE"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "healthCheck",
+      "description": "Health check",
+      "serviceUrl": "/api/v2/health",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "updateBranchStatus",
+      "description": "Change branch status",
+      "serviceUrl": "/api/v2/branches/{id}/status",
+      "httpMethod": "PUT"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getUserGroups",
+      "description": "Get user groups",
+      "serviceUrl": "/api/v2/users/{id}/groups",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getUserBranches",
+      "description": "Get user branches",
+      "serviceUrl": "/api/v2/users/{id}/branches",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getUserCourses",
+      "description": "Get user courses",
+      "serviceUrl": "/api/v2/users/{id}/courses",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getUserResources",
+      "description": "Get user resources",
+      "serviceUrl": "/api/v2/users/{id}/resources",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getUserGamification",
+      "description": "Get a user's gamification data",
+      "serviceUrl": "/api/v2/users/{id}/gamification",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getGroupCourses",
+      "description": "Get group courses",
+      "serviceUrl": "/api/v2/groups/{id}/courses",
+      "httpMethod": "GET"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "getUserCertificates",
+      "description": "Get user certificates",
+      "serviceUrl": "/api/v2/users/{id}/certificates",
+      "httpMethod": "GET"
+    }
+  ]
+}
