@@ -1,0 +1,59 @@
+name: TalentLMS FinOps
+description: Financial operations guidance for TalentLMS API consumers, covering cost management, billing models, and optimization strategies.
+url: https://www.talentlms.com/pricing
+billingModel:
+  type: user-based
+  description: >
+    TalentLMS pricing is based on the monthly number of active users that log
+    in to the portal, not total registered users. Only users who authenticate
+    during the billing period count toward the plan's user limit.
+  billingCycles:
+    - monthly
+    - yearly
+  discount:
+    yearly: 20%
+    description: Annual billing provides a 20% discount over equivalent monthly billing.
+costDrivers:
+  - name: Active Users
+    description: >
+      The primary cost driver. Each plan tier has a user limit; exceeding it
+      requires upgrading to the next tier or, on the Pro plan, paying $6 per
+      additional active user per month.
+  - name: Plan Tier
+    description: >
+      Feature access is gated by plan tier (Free, Core, Grow, Pro, Enterprise).
+      API access is available on Core and above.
+  - name: AI Credits (TalentCraft)
+    description: >
+      AI-generated content credits vary by plan: Core (5,000/month), Grow
+      (10,000/month), Pro (15,000–25,000/month), Enterprise (80,000/month).
+      Overage costs are not publicly documented; contact sales for details.
+optimization:
+  - recommendation: Right-size active users
+    description: >
+      Since billing is based on monthly active logins, deactivating dormant
+      accounts or using branches to isolate learner groups can keep active
+      user counts within plan limits.
+  - recommendation: Use yearly billing
+    description: >
+      Commit to annual billing to capture the 20% discount if usage is
+      predictable.
+  - recommendation: Leverage Free tier for development
+    description: >
+      The Free plan (5 users, 10 courses) is suitable for API integration
+      development and testing before committing to a paid tier.
+  - recommendation: Monitor API rate limits
+    description: >
+      V2 rate limit headers (X-RateLimit-Remaining, X-RateLimit-Reset) enable
+      automated throttling to avoid burst overages. Implement exponential
+      backoff to stay within the 200 calls/5s and 2,000 calls/hour limits.
+  - recommendation: Evaluate Pro plan per-user overage vs. tier upgrade
+    description: >
+      On the Pro plan, additional users are billed at $6/user/month. At scale,
+      compare the per-user overage cost against the Enterprise plan's custom
+      pricing to find the breakeven point.
+enterpriseNotes: >
+  Enterprise pricing is custom and negotiated directly with TalentLMS sales.
+  Enterprise includes a dedicated Account Manager who can assist with volume
+  discounts and contract terms. Contact sales at https://www.talentlms.com/contact
+  for a quote.

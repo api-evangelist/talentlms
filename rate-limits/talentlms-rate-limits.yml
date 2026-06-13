@@ -1,0 +1,44 @@
+name: TalentLMS API Rate Limits
+description: Rate limiting policies for the TalentLMS REST API, covering both the legacy V1 API and the current V2 API.
+url: https://help.talentlms.com/hc/en-us/articles/24874457011356-TalentLMS-API-V2
+limits:
+  - api: V2 (current)
+    description: Rate limit for TalentLMS API V2 requests per domain.
+    requestsPerWindow: 200
+    windowSeconds: 5
+    windowDescription: 200 API calls per 5 seconds
+    hourlyLimit: 2000
+    hourlyDescription: 2,000 requests per hour
+    headers:
+      - name: X-RateLimit-Limit
+        description: The maximum number of requests allowed in the current window.
+      - name: X-RateLimit-Remaining
+        description: The number of requests remaining in the current window.
+      - name: X-RateLimit-Reset
+        description: The time when the current rate limit window resets.
+    notes: >
+      V2 returns clear rate limit information in response headers, enabling
+      integrations to automatically throttle requests when approaching limits
+      and avoid disruption.
+  - api: V1 (legacy)
+    description: Rate limit for TalentLMS API V1 legacy requests.
+    requestsPerWindow: 50
+    windowSeconds: 3600
+    windowDescription: 50 API calls per hour (free tier minimum)
+    notes: >
+      V1 does not return rate limit headers. Implement conservative request
+      pacing for bulk operations. No official Retry-After signals are
+      documented for V1.
+versioning:
+  v2:
+    description: >
+      V2 uses versioned API requests via a header (X-API-Version: YYYY-MM-DD),
+      allowing integrations to lock in a specific behavior version and adopt
+      changes on their own schedule.
+    example:
+      header: X-API-Version
+      value: "2025-01-01"
+  v1:
+    description: >
+      V1 uses URL-based versioning (e.g., /api/v1/). It is the legacy API
+      and is superseded by V2 for new integrations.

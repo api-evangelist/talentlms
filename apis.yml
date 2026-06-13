@@ -1,0 +1,93 @@
+aid: talentlms
+name: TalentLMS
+description: >
+  TalentLMS is a cloud-based learning management system (LMS) with a REST API
+  for managing users, courses, categories, branches, groups, and enrollments,
+  as well as accessing completion and assessment report data. The API supports
+  over 50 endpoints covering user and course lifecycle management, group and
+  branch administration, and retrieval of test and survey results. Authentication
+  uses API key-based HTTP Basic Auth on V1 and header-based API keys on V2.
+  TalentLMS V2 introduces versioned requests, clear rate-limit response headers,
+  and a dedicated developer hub.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/apis.yml
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+tags:
+  - Learning Management System
+  - LMS
+  - eLearning
+  - Training
+  - Courses
+  - Users
+  - Enrollments
+  - Education
+  - HR Tech
+  - Cloud
+apis:
+  - aid: talentlms:talentlms-api
+    name: TalentLMS API
+    description: >
+      REST API for TalentLMS providing programmatic access to users, courses,
+      categories, branches, groups, enrollments, and reporting data including
+      test and survey results. Over 50 endpoints support full lifecycle
+      management of learners and learning content.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.talentlms.io/
+    baseURL: https://{domain}.talentlms.com/api/v2
+    tags:
+      - Users
+      - Courses
+      - Categories
+      - Branches
+      - Groups
+      - Enrollments
+      - Reports
+      - Assessments
+    properties:
+      - type: Documentation
+        url: https://developers.talentlms.io/
+      - type: Documentation
+        url: https://help.talentlms.com/hc/en-us/articles/24874457011356-TalentLMS-API-V2
+      - type: PostmanCollection
+        url: https://documenter.getpostman.com/view/31867199/2sAY548Kou
+      - type: GitHubRepository
+        url: https://github.com/Trifoia/talentlms-sdk
+      - type: GitHubRepository
+        url: https://github.com/AhmedMashour/TalentLMS
+      - type: GitHubRepository
+        url: https://github.com/ib1984/py-talentlms
+    contact:
+      - FN: TalentLMS Support
+        url: https://help.talentlms.com/hc/en-us
+        email: ""
+common:
+  - type: Portal
+    url: https://developers.talentlms.io/
+  - type: Documentation
+    url: https://help.talentlms.com/hc/en-us/articles/24874457011356-TalentLMS-API-V2
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/31867199/2sAY548Kou
+  - type: Pricing
+    url: https://www.talentlms.com/pricing
+  - type: Blog
+    url: https://www.talentlms.com/blog/
+  - type: ReleaseNotes
+    url: https://help.talentlms.com/hc/en-us/sections/9593869767452-Product-News
+  - type: Support
+    url: https://help.talentlms.com/hc/en-us
+  - type: Login
+    url: https://www.talentlms.com/login
+  - type: SignUp
+    url: https://www.talentlms.com/signup
+  - type: Plans
+    url: plans/talentlms-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/talentlms-rate-limits.yml
+  - type: FinOps
+    url: finops/talentlms-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

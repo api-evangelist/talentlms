@@ -1,0 +1,77 @@
+name: TalentLMS Plans and Pricing
+description: Pricing plans for TalentLMS, a cloud-based learning management system. Plans are billed based on the monthly number of active users that log in to the portal.
+url: https://www.talentlms.com/pricing
+plans:
+  - name: Free
+    description: No-cost plan for small teams exploring TalentLMS.
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    userLimit: 5
+    features:
+      - Up to 10 courses
+      - Unlimited email support
+      - AI feature testing access
+  - name: Core
+    description: Entry-level paid plan for growing teams needing full LMS capabilities.
+    price: 119
+    currency: USD
+    billingCycle: monthly
+    billingNote: Billed yearly; 20% discount applied vs. month-to-month pricing.
+    userLimit: 40
+    features:
+      - Unlimited courses
+      - 1 branch
+      - Custom homepage and domain with SSL
+      - Single Sign On (SAML 2.0, LDAP, OpenID Connect)
+      - API access
+      - Custom reports
+      - Learning Paths
+      - TalentCraft AI (5,000 credits/month)
+      - AI Coach
+      - AI Skills
+      - Onboarding discovery call
+  - name: Grow
+    description: Mid-tier plan for organizations scaling training programs with multiple branches.
+    price: 229
+    currency: USD
+    billingCycle: monthly
+    billingNote: Billed yearly; 20% discount applied vs. month-to-month pricing.
+    userLimit: 70
+    features:
+      - All Core plan features
+      - 3 branches
+      - 5 Learning Paths
+      - TalentCraft premium AI (10,000 credits/month)
+      - Onboarding Starter (2 weeks guided setup)
+  - name: Pro
+    description: Advanced plan for larger organizations with up to 500+ users and extensive branch management.
+    price: 449
+    currency: USD
+    billingCycle: monthly
+    billingNote: Billed yearly; 20% discount applied. Additional users billed at $6/user/month beyond the base.
+    userLimit: 100
+    userLimitNotes: Base includes up to 100 users; expandable to 500+ at $6 per additional user.
+    features:
+      - All Grow plan features
+      - 15 branches
+      - Unlimited Learning Paths
+      - TalentCraft premium AI (15,000–25,000 credits/month)
+      - Advanced onboarding support
+      - Group Supervisor for up to 10 groups
+  - name: Enterprise
+    description: Custom enterprise plan for large organizations with 1,000+ users, dedicated support, and unlimited features.
+    price: custom
+    currency: USD
+    billingCycle: custom
+    billingNote: Contact sales for custom pricing. Flex option available for 500+ users.
+    userLimit: 1000
+    userLimitNotes: Starts at 1,000 users; Flex option starts at 500 users.
+    features:
+      - All Pro plan features
+      - Unlimited branches
+      - Unlimited Learning Paths
+      - TalentCraft unlimited AI (80,000 credits/month)
+      - Unlimited Group Supervisor access
+      - Premium onboarding
+      - Dedicated Account Manager
