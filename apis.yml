@@ -10,7 +10,7 @@ description: >
   TalentLMS V2 introduces versioned requests, clear rate-limit response headers,
   and a dedicated developer hub.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -34,7 +34,7 @@ apis:
       categories, branches, groups, enrollments, and reporting data including
       test and survey results. Over 50 endpoints support full lifecycle
       management of learners and learning content.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.talentlms.io/
     baseURL: https://{domain}.talentlms.com/api/v2
     tags:
