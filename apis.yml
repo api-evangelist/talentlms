@@ -80,7 +80,7 @@ common:
     url: https://help.talentlms.com/hc/en-us
   - type: Login
     url: https://www.talentlms.com/login
-  - type: SignUp
+  - type: Signup
     url: https://www.talentlms.com/signup
   - type: Plans
     url: plans/talentlms-plans-pricing.yml
