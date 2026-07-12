@@ -64,6 +64,10 @@ apis:
         url: https://help.talentlms.com/hc/en-us
         email: ""
 common:
+  - type: DomainSecurity
+    url: security/talentlms-domain-security.yml
+  - type: Authentication
+    url: authentication/talentlms-authentication.yml
   - type: Portal
     url: https://developers.talentlms.io/
   - type: Documentation

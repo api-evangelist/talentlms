@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/talentlms-openapi.yaml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apikeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  sources:
+  - openapi/talentlms-openapi.yaml
