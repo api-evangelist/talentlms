@@ -64,6 +64,8 @@ apis:
         url: https://help.talentlms.com/hc/en-us
         email: ""
 common:
+  - type: AgenticAccess
+    url: agentic-access/talentlms-agentic-access.yml
   - type: DomainSecurity
     url: security/talentlms-domain-security.yml
   - type: Authentication
