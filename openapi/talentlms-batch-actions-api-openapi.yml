@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: TalentLMS Public Batch Actions API
+  description: "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly. It is organized around Representational State Transfer (REST) and is built to leverage standard HTTP features such as HTTP authentication and HTTP response codes, ensuring seamless integration. All API responses, including error messages, are consistently formatted in JSON for easy parsing and handling.\n\nIf your TalentLMS domain is called “samples”, then the API endpoint for your domain is [<code>https://samples.talentlms.com/api/v2</code>](https://samples.talentlms.com/api).\n\nThe current version of the API consumes data – information about users, courses, categories, groups, branches, and general details about your domain. Apart from that, via the API you can log in / sign up a user in your domain, enroll a user in a course, and much more. Please make sure, that you are accessing the URLs below, under HTTPs connections, otherwise, you will receive an error.\n\n## \U0001F680 **Getting Started Guide**\n\nTo start using the TalentLMS API, you must first [enable the API and generate a valid API](https://help.talentlms.com/hc/en-us/articles/9651527213468-Can-I-integrate-my-site-with-TalentLMS-Do-you-offer-an-API) key from the portal's settings (Account & Settings > Integrations > API).\n\n**Keep in mind:**\n\n- The pagination limit of each request is 100.\n    \n- The API has rate and usage limits (e.g. 2000 requests per hour).\n    \n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key (All calls must have an Accept: application/json header value).\n    \n- In each request you must add the desired version of the API by adding the header option with the key `X-API-Version` and value (the format of the version must be `YYYY-MM-DD`).\n    \n## \U0001F510 Authentication\n\nAll of the requests require authentication. Our API uses the `API Key` authorization method, with key `X-API-Key` and value `your_api_key`. You can always fill these fields in the global variables or create an environment and insert them there.\n\n### ⛔️ Authentication error response\n\nYou will receive an HTTP 401 Unauthorized response code if the API key is missing, incorrectly formatted, or invalid.\n\n### ✅ API Responses\n\nTalentLMS API uses HTTP response codes to indicate the success or failure of requests. Specifically, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided arguments (e.g. instead of an integer a string is supplied), and the 500 error code indicates an internal TalentLMS error. Please be aware that you will receive an error too, in case you try to access an endpoint via non HTTPs connection.\n\nAll errors return JSON consisting of a type (invalid_request_error or api_error) and a message describing the error.\n\n| **Code** | **Description** |\n| --- | --- |\n| 200 | The request was executed properly and a JSON response is returned. |\n| 204 | No content, and the operation was executed successfully. |\n| 400 | A required parameter is missing or an invalid type (e.g. a string) was supplied instead of an integer. |\n| 401 | Invalid API key provided. |\n| 403 | API is not enabled for the specified domain or the domain is currently inactive. |\n| 404 | The requested resource (e.g. user) does not exist. |\n| 422 | Malformed response. |\n| 429 | The API request rate limit has been exceeded. |\n| 500 | Internal server error. |\n\n### \U0001F6D1 Rate Limits\n\nRate limits represent the maximum number of API requests that are permitted to be made  \nper hour. These limits depend on your subscription plan and are as follows:\n\n| **Plan** | **Limit** |\n| --- | --- |\n| Core | 2.000 |\n| Grow | 10.000 |\n| Pro | 10.000 |\n| Small | 2.000 |\n| Basic | 2.000 |\n| Plus | 10.000 |\n| Premium | 10.000 |\n| Custom | Contact us so we can create a plan that fits your needs |\n\nRegardless of the total API requests per hour provisioned per customer, each customer's API requests should not exceed the rate of 200 API calls per 5 seconds. The following headers are included in API responses to help manage rate limits:\n\n- **`X-RateLimit-Limit`**: The maximum number of requests allowed in the current time window\n    \n- **`X-RateLimit-Remaining`**: The number of requests left in the current window before hitting the limit\n    \n### \U0001F4C4 Pagination\n\nOur API supports pagination, splitting responses into size-customizable chunks of up to 100 items per request. You can navigate to the first, last, previous, or next page. The endpoints that support pagination return a list formatted as shown below:\n\n``` json\n{\n        \"self\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"first\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"last\": \"https://example.talentlms.com/api/v2/users?page[number]=4&page[size]=10\",\n        \"prev\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"next\": \"https://example.talentlms.com/api/v2/users?page[number]=2&page[size]=10\"\n}\n\n ```"
+  version: 1.0.0
+servers:
+- url: https://your-domain.talentlms.com
+security:
+- apikeyAuth: []
+tags:
+- name: Batch Actions
+  description: This section introduces endpoints that perform bulk actions. After invoking any of the below endpoints, their response includes a background task ID.. You can use the `GET api/v2/tasks/:id` endpoint to track the progress of the action. For each request, the limit of items passed inside the body is 100.
+paths:
+  /api/v2/batch/courses:
+    post:
+      tags:
+      - Batch Actions
+      summary: Upsert Courses
+      description: '### Upsert courses
+
+
+        Provide the course name, code, description and status to create new courses or update an existing ones. You can update a course by providing either its code or id.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                courses:
+                - name: <string>
+                  code: <string>
+                  description: <string>
+                  is_active: <boolean>
+                - name: <string>
+                  code: <string>
+                  description: <string>
+                  is_active: <boolean>
+      parameters:
+      - name: X-API-Version
+        in: header
+        schema:
+          type: string
+        example: '{{apiVersion}}'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/batch/enrollments:
+    post:
+      tags:
+      - Batch Actions
+      summary: Course Enrollments
+      description: '### Course Enrollments
+
+
+        Creates multiple course enrollments in a single request.
+
+
+        Use this endpoint to mass assign users to courses by providing an array of course_id and user_id pairs in the request body. If the request is valid, the API processes each enrollment and returns the corresponding results.
+
+
+        This endpoint is ideal for bulk operations and large-scale user-course assignments.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                enrollments:
+                - course_id: <integer>
+                  user_id: <integer>
+                - course_id: <integer>
+                  user_id: <integer>
+      parameters:
+      - name: X-API-Version
+        in: header
+        schema:
+          type: string
+        example: '{{apiVersion}}'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/batch/users:
+    post:
+      tags:
+      - Batch Actions
+      summary: Upsert Users
+      description: 'Creates or updates multiple users in a single request.
+
+
+        Use this endpoint to mass create or update users by providing an array of user objects in the request body. Each object may include core user attributes (such as login, name, email, and status) as well as custom user fields. If a user already exists, the body needs to have the corresponding id and their information will be updated. If the user does not exist, a new user is created.
+
+
+        This endpoint is ideal for bulk user provisioning, HRIS synchronization, and large-scale user updates, including custom field updates.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                users:
+                - login: <string>
+                  name: <string>
+                  surname: <string>
+                  email: <string>
+                  status: <string>
+                  custom_field_1: <string>
+                  custom_field_2: <string>
+                  custom_field_4: <string>
+      parameters:
+      - name: Content-Type
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: Accept
+        in: header
+        schema:
+          type: string
+        example: application/json
+      - name: X-API-Version
+        in: header
+        schema:
+          type: string
+        example: '{{apiVersion}}'
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json: {}
+components:
+  securitySchemes:
+    apikeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
