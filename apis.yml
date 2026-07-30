@@ -10,7 +10,20 @@ description: >
   TalentLMS V2 introduces versioned requests, clear rate-limit response headers,
   and a dedicated developer hub.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/talentlms.png
 url: https://raw.githubusercontent.com/api-evangelist/talentlms/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -27,42 +40,154 @@ tags:
   - HR Tech
   - Cloud
 apis:
-  - aid: talentlms:talentlms-api
-    name: TalentLMS API
-    description: >
-      REST API for TalentLMS providing programmatic access to users, courses,
-      categories, branches, groups, enrollments, and reporting data including
-      test and survey results. Over 50 endpoints support full lifecycle
-      management of learners and learning content.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.talentlms.io/
-    baseURL: https://{domain}.talentlms.com/api/v2
-    tags:
-      - Users
-      - Courses
-      - Categories
-      - Branches
-      - Groups
-      - Enrollments
-      - Reports
-      - Assessments
-    properties:
-      - type: Documentation
-        url: https://developers.talentlms.io/
-      - type: Documentation
-        url: https://help.talentlms.com/hc/en-us/articles/24874457011356-TalentLMS-API-V2
-      - type: PostmanCollection
-        url: https://documenter.getpostman.com/view/31867199/2sAY548Kou
-      - type: GitHubRepository
-        url: https://github.com/Trifoia/talentlms-sdk
-      - type: GitHubRepository
-        url: https://github.com/AhmedMashour/TalentLMS
-      - type: GitHubRepository
-        url: https://github.com/ib1984/py-talentlms
-    contact:
-      - FN: TalentLMS Support
-        url: https://help.talentlms.com/hc/en-us
-        email: ""
+- aid: talentlms:talentlms-api
+  name: TalentLMS API
+  description: >
+    REST API for TalentLMS providing programmatic access to users, courses, categories, branches, groups,
+    enrollments, and reporting data including test and survey results. Over 50 endpoints support full
+    lifecycle management of learners and learning content.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Users
+  - Courses
+  - Categories
+  - Branches
+  - Groups
+  - Enrollments
+  - Reports
+  - Assessments
+  properties:
+  - type: Documentation
+    url: https://developers.talentlms.io/
+  - type: Documentation
+    url: https://help.talentlms.com/hc/en-us/articles/24874457011356-TalentLMS-API-V2
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/31867199/2sAY548Kou
+  - type: GitHubRepository
+    url: https://github.com/Trifoia/talentlms-sdk
+  - type: GitHubRepository
+    url: https://github.com/AhmedMashour/TalentLMS
+  - type: GitHubRepository
+    url: https://github.com/ib1984/py-talentlms
+  contact:
+  - FN: TalentLMS Support
+    url: https://help.talentlms.com/hc/en-us
+    email: ''
+- aid: talentlms:talentlms-batch-actions-api
+  name: TalentLMS Batch Actions API
+  description: >-
+    This section introduces endpoints that perform bulk actions. After invoking any of the below endpoints,
+    their response includes a background task ID.. You can use the `GET api/v2/tasks/:id` endpoint to
+    track the progress of the action. For each request, the limit of items passed inside the body is 100.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Batch Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-batch-actions-api-openapi.yml
+- aid: talentlms:talentlms-branch-api
+  name: TalentLMS Branch API
+  description: The Branch API from TalentLMS — 5 operation(s) for branch.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Branch
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-branch-api-openapi.yml
+- aid: talentlms:talentlms-category-api
+  name: TalentLMS Category API
+  description: The Category API from TalentLMS — 3 operation(s) for category.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Category
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-category-api-openapi.yml
+- aid: talentlms:talentlms-course-api
+  name: TalentLMS Course API
+  description: The Course API from TalentLMS — 6 operation(s) for course.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Course
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-course-api-openapi.yml
+- aid: talentlms:talentlms-group-api
+  name: TalentLMS Group API
+  description: The Group API from TalentLMS — 5 operation(s) for group.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Group
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-group-api-openapi.yml
+- aid: talentlms:talentlms-learning-paths-api
+  name: TalentLMS Learning Paths API
+  description: The Learning Paths API from TalentLMS — 3 operation(s) for learning paths.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Learning Paths
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-learning-paths-api-openapi.yml
+- aid: talentlms:talentlms-portal-api
+  name: TalentLMS Portal API
+  description: The Portal API from TalentLMS — 2 operation(s) for portal.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Portal
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-portal-api-openapi.yml
+- aid: talentlms:talentlms-task-api
+  name: TalentLMS Task API
+  description: The Task API from TalentLMS — 1 operation(s) for task.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Task
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-task-api-openapi.yml
+- aid: talentlms:talentlms-timeline-api
+  name: TalentLMS Timeline API
+  description: The Timeline API from TalentLMS — 1 operation(s) for timeline.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Timeline
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-timeline-api-openapi.yml
+- aid: talentlms:talentlms-unit-api
+  name: TalentLMS Unit API
+  description: The Unit API from TalentLMS — 2 operation(s) for unit.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - Unit
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-unit-api-openapi.yml
+- aid: talentlms:talentlms-user-api
+  name: TalentLMS User API
+  description: The User API from TalentLMS — 16 operation(s) for user.
+  humanURL: https://developers.talentlms.io/
+  baseURL: https://{domain}.talentlms.com/api/v2
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/talentlms-user-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/talentlms-agentic-access.yml
