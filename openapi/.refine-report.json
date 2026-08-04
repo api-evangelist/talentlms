@@ -1,0 +1,34 @@
+{
+  "provider": "talentlms",
+  "sources": [
+    "talentlms-batch-actions-api-openapi.yml",
+    "talentlms-branch-api-openapi.yml",
+    "talentlms-category-api-openapi.yml",
+    "talentlms-course-api-openapi.yml",
+    "talentlms-group-api-openapi.yml",
+    "talentlms-learning-paths-api-openapi.yml",
+    "talentlms-portal-api-openapi.yml",
+    "talentlms-task-api-openapi.yml",
+    "talentlms-timeline-api-openapi.yml",
+    "talentlms-unit-api-openapi.yml",
+    "talentlms-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "talentlms-batch-actions-api-openapi.yml",
+    "talentlms-branch-api-openapi.yml",
+    "talentlms-category-api-openapi.yml",
+    "talentlms-course-api-openapi.yml",
+    "talentlms-group-api-openapi.yml",
+    "talentlms-learning-paths-api-openapi.yml",
+    "talentlms-portal-api-openapi.yml",
+    "talentlms-task-api-openapi.yml",
+    "talentlms-timeline-api-openapi.yml",
+    "talentlms-unit-api-openapi.yml",
+    "talentlms-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
