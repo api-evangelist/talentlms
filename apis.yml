@@ -189,6 +189,9 @@ apis:
   - type: OpenAPI
     url: openapi/talentlms-user-api-openapi.yml
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/Trifoia/talentlms-sdk/blob/master/LICENSE
   - type: AgenticAccess
     url: agentic-access/talentlms-agentic-access.yml
   - type: DomainSecurity
