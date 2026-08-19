@@ -1,0 +1,586 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions User API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "filter[status][eq]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user status"
+              },
+              {
+                "name": "filter[login][eq]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by exact login match"
+              },
+              {
+                "name": "filter[email][eq]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by exact email match"
+              },
+              {
+                "name": "filter[keyword][like]",
+                "value": "",
+                "type": "query",
+                "description": "Search across name, surname, login, and email"
+              },
+              {
+                "name": "filter[last_updated][gte]",
+                "value": "2024-01-01T00:00:00",
+                "type": "query",
+                "description": "Filter users updated on or after this date (ISO 8601)"
+              },
+              {
+                "name": "filter[last_updated][lte]",
+                "value": "2024-12-31T23:59:59",
+                "type": "query",
+                "description": "Filter users updated on or before this date (ISO 8601)"
+              },
+              {
+                "name": "filter[branch_id][eq]",
+                "value": "",
+                "type": "query",
+                "description": "Filter users belonging to a specific branch"
+              },
+              {
+                "name": "filter[group_id][eq]",
+                "value": "",
+                "type": "query",
+                "description": "Filter users belonging to a specific group"
+              },
+              {
+                "name": "filter[integration][eq]",
+                "value": "",
+                "type": "query",
+                "description": "Filter users linked to a specific integration"
+              },
+              {
+                "name": "filter[custom_field_value][eq]",
+                "value": "",
+                "type": "query",
+                "description": "Filter users by a custom field value"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of users. Supports filtering by keyword, status, login, email, last_updated, branch_id, group_id, integration, and custom_field_value."
+        },
+        {
+          "info": {
+            "name": "Create a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/users",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Create a user\n\nThis endpoint accepts a JSON body containing the properties of the user to be created (e.g., `name`, `email`, `password`, etc.). Validates all required fields and returns the newly created user object upon success."
+        },
+        {
+          "info": {
+            "name": "Get a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "Retrieves the complete profile details of a specific user. To successfully fetch a user, include the user's unique ID as a path parameter in the request URL. If the request is valid and the user exists, the API returns the full set of user details in the response."
+        },
+        {
+          "info": {
+            "name": "Update a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Update a user\n\nProvide the user ID and updated fields to change user info and you will receive a 204 success message.\n\n| Name | Type | Required | Description | Example Value |\n| --- | --- | --- | --- | --- |\n| name | string | true | Maximum character limit: 191 characters. | \"John\" |\n| surname | string | true | Maximum character limit: 191 characters. | \"Doe\" |\n| login | string | true | Maximum character limit: 191 characters. | \"johndoe123\" |\n| email | email | true | It has to be a valid em"
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "### Delete a user\n\nPermanently deletes a specific user from your TalentLMS account. To successfully remove a user, include the user's unique ID as a path parameter in the request URL. If the request is valid and the user exists, the API deletes the user and returns a confirmation response."
+        },
+        {
+          "info": {
+            "name": "Get user's course progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/course-progress",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "<integer>",
+                "type": "query"
+              },
+              {
+                "name": "course_id",
+                "value": "<integer>",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "### Get user's course progress\n\nRetrieve a user's progress in a specific course by providing both `user_id` and `course_id` as query parameters, and receive JSON data about their course progress, completion status, and score."
+        },
+        {
+          "info": {
+            "name": "Reset user's course progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/course-progress",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "<integer>",
+                "type": "query"
+              },
+              {
+                "name": "course_id",
+                "value": "<integer>",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "### Reset user's course progress\n\nProvide user ID and course ID to reset the user's progress for a course, with a success (no content) or error response."
+        },
+        {
+          "info": {
+            "name": "Get user custom fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/user-fields",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get user custom fields\n\nGet all custom fields defined for users by making a simple authenticated GET request, and receive their definitions as a JSON array."
+        },
+        {
+          "info": {
+            "name": "Get user's unit progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/unit-progress",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "<integer>",
+                "type": "query"
+              },
+              {
+                "name": "unit_id",
+                "value": "<integer>",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "### Get user's unit progress\n\nRetrieve a user's progress in a specific unit by supplying `user_id` and `unit_id` as query parameters, and receive JSON data about the unit's progress, such as status, score, and timestamps."
+        },
+        {
+          "info": {
+            "name": "Login user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/login",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "### Login user\n\nLogs in a specific user to the portal. To successfully log in a user, provide the user's unique ID in the request. If the request is valid and the user exists, the system initiates a new session and logs the user into the portal."
+        },
+        {
+          "info": {
+            "name": "Logout user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/logout",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Logout user\n\nLogs out a specific user from the portal by terminating their active session. To successfully log out a user, provide the user’s unique ID in the request. If the request is valid and the user exists, the system immediately invalidates the user’s current session and logs them out of the portal."
+        },
+        {
+          "info": {
+            "name": "Get user online status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/online-status",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get user online status\n\nRetrieves the current online status of a specific user. To check whether a user is currently online, provide the user’s unique ID in the request. If the request is valid and the user exists, the API returns the user’s online status."
+        },
+        {
+          "info": {
+            "name": "Reset user's password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/password-reset",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "redirect_url",
+                "value": "<base64_encoded_url>",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Reset user's password\n\nReset a user's password by providing the user's login in the path and a base64-encoded redirect URL as a query parameter, returning a 204 No Content response upon successful password reset request."
+        },
+        {
+          "info": {
+            "name": "Recover username",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:email/username-recovery",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "domain_url",
+                "value": "<base64_encoded_url>",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "### Recover username\n\nThe system sends an email to the user (using the specified attribute, such as their login or email), which includes their username; the user can provide a custom portal URL (`domain_url`), and if not provided, the system will use the default portal URL."
+        },
+        {
+          "info": {
+            "name": "Get user groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/groups",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "Retrieves the groups assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of groups with their ID and name."
+        },
+        {
+          "info": {
+            "name": "Get user branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/branches",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "Retrieves the branches assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of branches with their ID and name."
+        },
+        {
+          "info": {
+            "name": "Get user courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "Retrieves the courses assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of courses with their ID and name."
+        },
+        {
+          "info": {
+            "name": "Get user resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/resources",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "Retrieves all resources assigned to a specific user: branches, groups, courses, and certificates."
+        },
+        {
+          "info": {
+            "name": "Get a user's gamification data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/gamification",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "### Returns a user's gamification sub-resource (points, level, and badges).\n     *     Returns 404 when gamification is disabled for the portal, or when the user does not exist.\n     *     Each badge contains: name, type, image_url, criteria, issued_on (unix timestamp) and badge_set_id."
+        },
+        {
+          "info": {
+            "name": "Get user certificates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/users/:id/certificates",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the user"
+              }
+            ]
+          },
+          "docs": "Retrieves the certificates earned by a specific user. Include the user's unique ID as a path parameter. Returns a list of certificates with their ID and name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

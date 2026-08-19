@@ -1,0 +1,2485 @@
+{
+  "item": [
+    {
+      "id": "7db030cd-26d3-4f5e-ab73-6424b85c8aa1",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be085861-f32e-4dfe-a16c-9a4e141300cd",
+          "name": "Get users",
+          "request": {
+            "name": "Get users",
+            "description": {
+              "content": "Returns a paginated list of users. Supports filtering by keyword, status, login, email, last_updated, branch_id, group_id, integration, and custom_field_value.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter[status][eq]",
+                  "value": "<string>",
+                  "description": "Filter by user status"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[login][eq]",
+                  "value": "<string>",
+                  "description": "Filter by exact login match"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[email][eq]",
+                  "value": "<string>",
+                  "description": "Filter by exact email match"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[keyword][like]",
+                  "value": "<string>",
+                  "description": "Search across name, surname, login, and email"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[last_updated][gte]",
+                  "value": "<dateTime>",
+                  "description": "Filter users updated on or after this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[last_updated][lte]",
+                  "value": "<dateTime>",
+                  "description": "Filter users updated on or before this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[branch_id][eq]",
+                  "value": "<integer>",
+                  "description": "Filter users belonging to a specific branch"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[group_id][eq]",
+                  "value": "<integer>",
+                  "description": "Filter users belonging to a specific group"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[integration][eq]",
+                  "value": "<string>",
+                  "description": "Filter users linked to a specific integration"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[custom_field_value][eq]",
+                  "value": "<string>",
+                  "description": "Filter users by a custom field value"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39501ff7-3a33-41eb-8553-8dd88eebad0f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter[status][eq]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[login][eq]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[email][eq]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[keyword][like]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[last_updated][gte]",
+                      "value": "2024-01-01T00:00:00"
+                    },
+                    {
+                      "key": "filter[last_updated][lte]",
+                      "value": "2024-12-31T23:59:59"
+                    },
+                    {
+                      "key": "filter[branch_id][eq]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[group_id][eq]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[integration][eq]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[custom_field_value][eq]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": [\n    {\n      \"id\": 1,\n      \"login\": \"jdoe\",\n      \"name\": \"John\",\n      \"surname\": \"Doe\",\n      \"email\": \"jdoe@example.com\",\n      \"avatar\": {\n        \"default\": \"string\",\n        \"sm\": \"string\",\n        \"md\": \"string\",\n        \"lg\": \"string\",\n        \"xl\": \"string\"\n      },\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"type\": \"Learner-Instructor\",\n      \"registration\": \"2019-11-05T06:27:59.795Z\",\n      \"last_login\": \"1997-10-08T06:16:47.381Z\",\n      \"status\": \"active\",\n      \"last_updated\": \"1956-09-30T21:24:26.070Z\",\n      \"integration_user_id\": \"string\"\n    },\n    {\n      \"id\": 1,\n      \"login\": \"jdoe\",\n      \"name\": \"John\",\n      \"surname\": \"Doe\",\n      \"email\": \"jdoe@example.com\",\n      \"avatar\": {\n        \"default\": \"string\",\n        \"sm\": \"string\",\n        \"md\": \"string\",\n        \"lg\": \"string\",\n        \"xl\": \"string\"\n      },\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"type\": \"Learner-Instructor\",\n      \"registration\": \"1975-10-29T13:16:52.046Z\",\n      \"last_login\": \"1978-11-14T02:15:42.016Z\",\n      \"status\": \"active\",\n      \"last_updated\": \"1991-12-28T00:17:08.375Z\",\n      \"integration_user_id\": \"string\"\n    }\n  ],\n  \"_links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  },\n  \"_meta\": {\n    \"pagination\": {\n      \"page\": 1,\n      \"page_size\": 25,\n      \"total_items\": 4215,\n      \"total_pages\": 8095,\n      \"total_results\": 9344\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af316fee-ffcc-45c6-ac43-35a8b8d6d377",
+          "name": "Create a user",
+          "request": {
+            "name": "Create a user",
+            "description": {
+              "content": "### Create a user\n\nThis endpoint accepts a JSON body containing the properties of the user to be created (e.g., `name`, `email`, `password`, etc.). Validates all required fields and returns the newly created user object upon success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e376788e-dc18-496e-b013-374182f5c48f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string|required>\",\n  \"surname\": \"<string|required>\",\n  \"login\": \"<string|required>\",\n  \"email\": \"<email|required>\",\n  \"timezone\": \"<timezone>\",\n  \"locale\": \"<locale>\",\n  \"email_notifications\": \"<boolean>\",\n  \"user_type_id\": \"<integer>\",\n  \"status\": \"<boolean>\",\n  \"password\": \"<string|required>\",\n  \"description\": \"<null|string>\",\n  \"credits\": \"<null|float>\",\n  \"deactivation_date\": \"<null|date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03d961d2-fe7c-40d7-80ef-1c1ef5a83dec",
+          "name": "Get a user",
+          "request": {
+            "name": "Get a user",
+            "description": {
+              "content": "Retrieves the complete profile details of a specific user. To successfully fetch a user, include the user's unique ID as a path parameter in the request URL. If the request is valid and the user exists, the API returns the full set of user details in the response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6e2aa04-f34e-4274-9ebb-4c92042e5777",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": {\n    \"id\": 2536,\n    \"login\": \"string\",\n    \"name\": \"string\",\n    \"surname\": \"string\",\n    \"email\": \"8EH0P9@hpjBAh.wst\",\n    \"credits\": 9143.524869469804,\n    \"description\": {\n      \"html\": \"string\",\n      \"text\": \"string\"\n    },\n    \"avatar\": {\n      \"default\": \"http://bbgNdGflEKkjmiKHVCWWV.wxOWfVdLU3rhsttZydXg\",\n      \"sm\": \"https://DBEdNuruWlMKelkTMzsupwFCHfGkgZ.itqYWfwshU01IEgmWZmPxsz.ntRyK9rD8ptQ,T7Z3.adl\",\n      \"md\": \"http://n.znbolYf1-EOfQe1kkvd\",\n      \"lg\": \"https://XqfWKOkbmIcgxYskZdl.pczlP,sTZH6+CswfSy3JJCASWhY8n2hm2cs\",\n      \"xl\": \"https://MvuZNlP.kazcTjm2uitWUzadOcN3zFhQMVzZT1d9z.olKPoI-0sMWOtdpfdqe+GuT4lKiDJ\"\n    },\n    \"custom_fields\": [\n      {\n        \"id\": 2747,\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"type\": \"date\"\n      },\n      {\n        \"id\": 2506,\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"type\": \"dropdown\"\n      }\n    ],\n    \"email_notifications\": false,\n    \"timezone\": \"string\",\n    \"locale\": \"string\",\n    \"user_type\": {\n      \"id\": 8029,\n      \"name\": \"string\",\n      \"is_default\": true\n    },\n    \"status\": \"inactive\",\n    \"deactivation_date\": \"1961-09-06T11:40:37.355Z\",\n    \"available_types\": [\n      {\n        \"id\": 3733,\n        \"name\": \"string\",\n        \"is_default\": true\n      },\n      {\n        \"id\": 2473,\n        \"name\": \"string\",\n        \"is_default\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0053d348-3cf2-4723-bbf3-303821814071",
+          "name": "Update a user",
+          "request": {
+            "name": "Update a user",
+            "description": {
+              "content": "### Update a user\n\nProvide the user ID and updated fields to change user info and you will receive a 204 success message.\n\n| Name | Type | Required | Description | Example Value |\n| --- | --- | --- | --- | --- |\n| name | string | true | Maximum character limit: 191 characters. | \"John\" |\n| surname | string | true | Maximum character limit: 191 characters. | \"Doe\" |\n| login | string | true | Maximum character limit: 191 characters. | \"johndoe123\" |\n| email | email | true | It has to be a valid email format and structure. Maximum character limit: 191 characters. The email has to be unique. | \"john@example.com\" |\n| description | string | true | Maximum character limit: 191 characters. | \"A short bio\" |\n| timezone | string | true | Maximum character limit: 191 characters. | \"UTC\" |\n| locale | string | true | Maximum character limit: 191 characters. | \"en-US\" |\n| email_notifications | boolean | true | Enable or disable email notifications. | true |\n| user_type_id | integer | true | ID representing the user's type. | 1 |\n| active | boolean | true | Indicates if the account is active. | true |\n| deactivation_date | date | true | Date when the account was deactivated. | \"2024-01-01\" |\n| current_password | string | true | Maximum character limit: 191 characters. | \"currentPass123\" |\n| password | string | true | Maximum character limit: 191 characters. | \"newPass456\" |\n| credits | float | true | Amount of user credits. | 11 |",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cbbdfba6-b5ce-4dc2-bdfb-e158e618a4e1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string|optional>\",\n  \"surname\": \"<string|optional>\",\n  \"login\": \"<string|optional>\",\n  \"email\": \"<email|optional>\",\n  \"description\": \"<string|optional>\",\n  \"timezone\": \"<string|timezone|optional>\",\n  \"locale\": \"<string|optional>\",\n  \"email_notifications\": \"<boolean|optional>\",\n  \"user_type_id\": \"<integer|optional>\",\n  \"status\": \"<enum|required>\",\n  \"deactivation_date\": \"<string|YYYY-MM-DD|optional>\",\n  \"current_password\": \"<string|optional>\",\n  \"password\": \"<string|optional>\",\n  \"credits\": \"<integer|optional>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb2c49bd-d62d-4260-9afa-bf829dc661dc",
+          "name": "Delete a user",
+          "request": {
+            "name": "Delete a user",
+            "description": {
+              "content": "### Delete a user\n\nPermanently deletes a specific user from your TalentLMS account. To successfully remove a user, include the user's unique ID as a path parameter in the request URL. If the request is valid and the user exists, the API deletes the user and returns a confirmation response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de4f3758-b6e1-4c59-887c-d68d069bfb02",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa59bb8b-800a-4936-b037-c1030f47e066",
+          "name": "Get user's course progress",
+          "request": {
+            "name": "Get user's course progress",
+            "description": {
+              "content": "### Get user's course progress\n\nRetrieve a user's progress in a specific course by providing both `user_id` and `course_id` as query parameters, and receive JSON data about their course progress, completion status, and score.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "course-progress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "course_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31da54fb-56eb-4c94-b286-8558056a5a47",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "course-progress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "course_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2d259fb-b46a-4f71-b111-2f9c513a4c38",
+          "name": "Reset user's course progress",
+          "request": {
+            "name": "Reset user's course progress",
+            "description": {
+              "content": "### Reset user's course progress\n\nProvide user ID and course ID to reset the user's progress for a course, with a success (no content) or error response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "course-progress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "course_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "848dd2b7-6540-499a-b3b7-78e18a2bda3d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "course-progress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "course_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fddbfdb-9fd2-4712-8152-adcec7b2a206",
+          "name": "Get user custom fields",
+          "request": {
+            "name": "Get user custom fields",
+            "description": {
+              "content": "### Get user custom fields\n\nGet all custom fields defined for users by making a simple authenticated GET request, and receive their definitions as a JSON array.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "user-fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1ef296c-6a9c-4a8a-9b11-f1f468c0a2e4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "user-fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59da703b-d841-4841-8767-4fa5ea7f7839",
+          "name": "Get user's unit progress",
+          "request": {
+            "name": "Get user's unit progress",
+            "description": {
+              "content": "### Get user's unit progress\n\nRetrieve a user's progress in a specific unit by supplying `user_id` and `unit_id` as query parameters, and receive JSON data about the unit's progress, such as status, score, and timestamps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "unit-progress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "unit_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3a1e06d-63b3-4221-82b1-149dbd6ef6ff",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "unit-progress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "unit_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "579b2953-3694-4eee-a094-78686c9f45f9",
+          "name": "Login user",
+          "request": {
+            "name": "Login user",
+            "description": {
+              "content": "### Login user\n\nLogs in a specific user to the portal. To successfully log in a user, provide the user's unique ID in the request. If the request is valid and the user exists, the system initiates a new session and logs the user into the portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5f4f51a-d13a-4299-b2e4-2cb8dc16e332",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "515793ef-eb0a-4f0e-8ca2-c752dd6a860b",
+          "name": "Logout user",
+          "request": {
+            "name": "Logout user",
+            "description": {
+              "content": "### Logout user\n\nLogs out a specific user from the portal by terminating their active session. To successfully log out a user, provide the user’s unique ID in the request. If the request is valid and the user exists, the system immediately invalidates the user’s current session and logs them out of the portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a5782c2-478c-43f9-9e48-cfdc0c201301",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"next\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4730dda1-8a13-4fb3-a672-ea083c9df5e1",
+          "name": "Get user online status",
+          "request": {
+            "name": "Get user online status",
+            "description": {
+              "content": "### Get user online status\n\nRetrieves the current online status of a specific user. To check whether a user is currently online, provide the user’s unique ID in the request. If the request is valid and the user exists, the API returns the user’s online status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "online-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f02ee882-00c3-460a-b17b-72005834da32",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "online-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d0fd470-f8e9-4f79-b2da-bca99e71e21d",
+          "name": "Reset user's password",
+          "request": {
+            "name": "Reset user's password",
+            "description": {
+              "content": "### Reset user's password\n\nReset a user's password by providing the user's login in the path and a base64-encoded redirect URL as a query parameter, returning a 204 No Content response upon successful password reset request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "password-reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect_url",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9f7388d-3d04-4bf7-92f4-4cd2cd7d93e5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "password-reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect_url",
+                      "value": "<base64_encoded_url>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"login\": \"<login>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "553ac842-281d-488f-98c2-268f71ef3246",
+          "name": "Recover username",
+          "request": {
+            "name": "Recover username",
+            "description": {
+              "content": "### Recover username\n\nThe system sends an email to the user (using the specified attribute, such as their login or email), which includes their username; the user can provide a custom portal URL (`domain_url`), and if not provided, the system will use the default portal URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":email",
+                "username-recovery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain_url",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "id": "8a9bca8f-8d38-4ae5-bef7-0ba091ef4c6b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":email",
+                    "username-recovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain_url",
+                      "value": "<base64_encoded_url>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "073f83e7-71d2-4cd5-97c3-80328ca73582",
+          "name": "Get user groups",
+          "request": {
+            "name": "Get user groups",
+            "description": {
+              "content": "Retrieves the groups assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of groups with their ID and name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eebf9f6a-8dec-4966-b392-76214b2d08de",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": {\n    \"groups\": [\n      {\n        \"id\": 2304,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 1661,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2529502d-14b6-4a46-8834-c14994405e4d",
+          "name": "Get user branches",
+          "request": {
+            "name": "Get user branches",
+            "description": {
+              "content": "Retrieves the branches assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of branches with their ID and name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c92370c3-ebeb-4eac-b6ad-c1344f00af28",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": {\n    \"branches\": [\n      {\n        \"id\": 754,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 3115,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e236f0cc-63ed-44c2-b237-4affd50444e4",
+          "name": "Get user courses",
+          "request": {
+            "name": "Get user courses",
+            "description": {
+              "content": "Retrieves the courses assigned to a specific user. Include the user's unique ID as a path parameter. Returns a list of courses with their ID and name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "courses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "642848ea-1eed-4215-a6cc-a1bc1c185a84",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "courses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": {\n    \"courses\": [\n      {\n        \"id\": 9024,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 6853,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e77203e3-03d4-4b82-b2c2-02d5f6568692",
+          "name": "Get user resources",
+          "request": {
+            "name": "Get user resources",
+            "description": {
+              "content": "Retrieves all resources assigned to a specific user: branches, groups, courses, and certificates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "887c0819-8e93-429d-b46c-c037c853a395",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": {\n    \"branches\": [\n      {\n        \"id\": 2388,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 8651,\n        \"name\": \"string\"\n      }\n    ],\n    \"groups\": [\n      {\n        \"id\": 7323,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 5199,\n        \"name\": \"string\"\n      }\n    ],\n    \"courses\": [\n      {\n        \"id\": 6147,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 6774,\n        \"name\": \"string\"\n      }\n    ],\n    \"certificates\": [\n      {\n        \"id\": 6928,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 4924,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2bc57ae-3df6-4dac-aaf9-39e4f0a6a865",
+          "name": "Get a user's gamification data",
+          "request": {
+            "name": "Get a user's gamification data",
+            "description": {
+              "content": "### Returns a user's gamification sub-resource (points, level, and badges).\n     *     Returns 404 when gamification is disabled for the portal, or when the user does not exist.\n     *     Each badge contains: name, type, image_url, criteria, issued_on (unix timestamp) and badge_set_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "gamification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ddbcc01-9751-4b01-b8a9-463e1dea3b76",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "gamification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": {\n    \"points\": 7116,\n    \"level\": 8154,\n    \"badges\": [\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"image_url\": \"string\",\n        \"criteria\": \"string\",\n        \"issued_on\": 2917,\n        \"badge_set_id\": 4385\n      },\n      {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"image_url\": \"string\",\n        \"criteria\": \"string\",\n        \"issued_on\": 8784,\n        \"badge_set_id\": 9160\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3f0a6a0-ee11-49ba-93aa-46166ecc4564",
+              "name": "Gamification is not enabled or user not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "gamification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc364011-358f-47f5-bbb6-b9d8f4b43ddc",
+          "name": "Get user certificates",
+          "request": {
+            "name": "Get user certificates",
+            "description": {
+              "content": "Retrieves the certificates earned by a specific user. Include the user's unique ID as a path parameter. Returns a list of certificates with their ID and name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "users",
+                ":id",
+                "certificates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the user"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f27ed17b-e615-4c36-a44b-194daea8d685",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "users",
+                    ":id",
+                    "certificates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the user"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_data\": {\n    \"certificates\": [\n      {\n        \"id\": 3436,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": 1510,\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-domain.talentlms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "528c6161-3fbf-452a-b255-c176aee5cbee",
+    "name": "TalentLMS Public Batch Actions User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly. It is organized around Representational State Transfer (REST) and is built to leverage standard HTTP features such as HTTP authentication and HTTP response codes, ensuring seamless integration. All API responses, including error messages, are consistently formatted in JSON for easy parsing and handling.\n\nIf your TalentLMS domain is called “samples”, then the API endpoint for your domain is [<code>https://samples.talentlms.com/api/v2</code>](https://samples.talentlms.com/api).\n\nThe current version of the API consumes data – information about users, courses, categories, groups, branches, and general details about your domain. Apart from that, via the API you can log in / sign up a user in your domain, enroll a user in a course, and much more. Please make sure, that you are accessing the URLs below, under HTTPs connections, otherwise, you will receive an error.\n\n## 🚀 **Getting Started Guide**\n\nTo start using the TalentLMS API, you must first [enable the API and generate a valid API](https://help.talentlms.com/hc/en-us/articles/9651527213468-Can-I-integrate-my-site-with-TalentLMS-Do-you-offer-an-API) key from the portal's settings (Account & Settings > Integrations > API).\n\n**Keep in mind:**\n\n- The pagination limit of each request is 100.\n    \n- The API has rate and usage limits (e.g. 2000 requests per hour).\n    \n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key (All calls must have an Accept: application/json header value).\n    \n- In each request you must add the desired version of the API by adding the header option with the key `X-API-Version` and value (the format of the version must be `YYYY-MM-DD`).\n    \n## 🔐 Authentication\n\nAll of the requests require authentication. Our API uses the `API Key` authorization method, with key `X-API-Key` and value `your_api_key`. You can always fill these fields in the global variables or create an environment and insert them there.\n\n### ⛔️ Authentication error response\n\nYou will receive an HTTP 401 Unauthorized response code if the API key is missing, incorrectly formatted, or invalid.\n\n### ✅ API Responses\n\nTalentLMS API uses HTTP response codes to indicate the success or failure of requests. Specifically, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided arguments (e.g. instead of an integer a string is supplied), and the 500 error code indicates an internal TalentLMS error. Please be aware that you will receive an error too, in case you try to access an endpoint via non HTTPs connection.\n\nAll errors return JSON consisting of a type (invalid_request_error or api_error) and a message describing the error.\n\n| **Code** | **Description** |\n| --- | --- |\n| 200 | The request was executed properly and a JSON response is returned. |\n| 204 | No content, and the operation was executed successfully. |\n| 400 | A required parameter is missing or an invalid type (e.g. a string) was supplied instead of an integer. |\n| 401 | Invalid API key provided. |\n| 403 | API is not enabled for the specified domain or the domain is currently inactive. |\n| 404 | The requested resource (e.g. user) does not exist. |\n| 422 | Malformed response. |\n| 429 | The API request rate limit has been exceeded. |\n| 500 | Internal server error. |\n\n### 🛑 Rate Limits\n\nRate limits represent the maximum number of API requests that are permitted to be made  \nper hour. These limits depend on your subscription plan and are as follows:\n\n| **Plan** | **Limit** |\n| --- | --- |\n| Core | 2.000 |\n| Grow | 10.000 |\n| Pro | 10.000 |\n| Small | 2.000 |\n| Basic | 2.000 |\n| Plus | 10.000 |\n| Premium | 10.000 |\n| Custom | Contact us so we can create a plan that fits your needs |\n\nRegardless of the total API requests per hour provisioned per customer, each customer's API requests should not exceed the rate of 200 API calls per 5 seconds. The following headers are included in API responses to help manage rate limits:\n\n- **`X-RateLimit-Limit`**: The maximum number of requests allowed in the current time window\n    \n- **`X-RateLimit-Remaining`**: The number of requests left in the current window before hitting the limit\n    \n### 📄 Pagination\n\nOur API supports pagination, splitting responses into size-customizable chunks of up to 100 items per request. You can navigate to the first, last, previous, or next page. The endpoints that support pagination return a list formatted as shown below:\n\n``` json\n{\n        \"self\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"first\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"last\": \"https://example.talentlms.com/api/v2/users?page[number]=4&page[size]=10\",\n        \"prev\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"next\": \"https://example.talentlms.com/api/v2/users?page[number]=2&page[size]=10\"\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}

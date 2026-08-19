@@ -1,0 +1,209 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions Group API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/groups",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### List all groups\n\nRetrieves a paginated list of all groups in your TalentLMS account. Upon a successful request, the API returns a JSON response containing group objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets."
+        },
+        {
+          "info": {
+            "name": "Create a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/groups",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Create a group\n\nCreates a new group in your TalentLMS account. To successfully create a group, provide the required group attributes in the request body. If the request is valid, the API creates the group and returns the newly created group object, including its unique ID."
+        },
+        {
+          "info": {
+            "name": "Get a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/groups/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get a group\n\nRetrieves the full details of a specific group. To successfully fetch a group, include the group’s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API returns detailed information about the group, including its metadata, assigned users, and related configuration settings (where applicable)."
+        },
+        {
+          "info": {
+            "name": "Delete a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/groups/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Delete a group\n\nPermanently deletes a specific group from your TalentLMS account. To successfully remove a group, include the group’s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API deletes the group and returns a **204 No Content** response upon success."
+        },
+        {
+          "info": {
+            "name": "Add a user to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/group-memberships",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Add a user to a group\n\nAdds a user to a specific group. To create a group membership, provide the user’s unique ID using the user_id attribute and the group’s unique ID using the group_id attribute in the request body. If the request is valid and both the user and group exist, the API creates the membership and returns the corresponding group membership details."
+        },
+        {
+          "info": {
+            "name": "Remove user from a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/group-memberships",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "### Remove user from a group\n\nRemoves a user from a specific group. To delete a group membership, provide the user’s unique ID using the user_id attribute and the group’s unique ID using the group_id attribute. If the request is valid and the membership exists, the API removes the user from the specified group and returns a **204 No Content** response upon success."
+        },
+        {
+          "info": {
+            "name": "Add a course to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/group-courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Add a course to a group\n\nAssociates a course with a specific group. To assign a course to a group, provide the course’s unique ID using the course_id attribute and the group’s unique ID using the group_id attribute in the request body. If the request is valid and both the course and group exist, the API creates the association and returns the corresponding group-course relationship details."
+        },
+        {
+          "info": {
+            "name": "Remove course from group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/group-courses"
+          },
+          "docs": "### Remove course from group\n\nRemoves a course from a specific group. To successfully remove a course from a group, provide the group's unique ID using the `group_id` attribute and the course's unique ID using the `course_id` attribute in the request body. If the request is valid and the association exists, the API deletes the group-course relationship and returns a 204 No Content response upon success."
+        },
+        {
+          "info": {
+            "name": "Get group courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/groups/:id/courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the group"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of courses assigned to a group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

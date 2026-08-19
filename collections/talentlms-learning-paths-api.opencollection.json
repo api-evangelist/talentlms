@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions Learning Paths API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Learning Paths",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get learning paths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/learning-paths",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### **List all learning paths**\n\n  \nRetrieves a paginated list of all learning paths in your TalentLMS account. Upon a successful request, the API returns a JSON response containing learning path objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets. You can optionally filter the response by keyword or status."
+        },
+        {
+          "info": {
+            "name": "Get learning path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/learning-paths/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get a learning path\n\nRetrieves the details of a specific learning path. To successfully fetch a learning path, include the learning path's unique ID as a path parameter in the request URL. If the request is valid and the learning path exists, the API returns the full set of learning path details in the response."
+        },
+        {
+          "info": {
+            "name": "Enroll a user to a learning path",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/learning-paths/enrollments",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Enroll user to learning path\n\nEnrolls a user into a specific learning path. To create an enrollment, provide the user's unique ID using the `user_id` attribute and the learning path's unique ID using the `learning_path_id` attribute in the request body. If the request is valid and both the user and learning path exist, the API creates the enrollment and returns the enrollment details in the response."
+        },
+        {
+          "info": {
+            "name": "Remove a user from a learning path",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/learning-paths/enrollments",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Remove user from learning path\n\nRemoves a user's enrollment from a specific learning path. To successfully unenroll a user, provide the user's unique ID using the `user_id` attribute and the learning path's unique ID using the `learning_path_id` attribute in the request body. If the request is valid and the enrollment exists, the API deletes the enrollment and removes the user's access to the learning path."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

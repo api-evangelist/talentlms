@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Batch Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upsert Courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/batch/courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Upsert courses\n\nProvide the course name, code, description and status to create new courses or update an existing ones. You can update a course by providing either its code or id."
+        },
+        {
+          "info": {
+            "name": "Course Enrollments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/batch/enrollments",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Course Enrollments\n\nCreates multiple course enrollments in a single request.\n\nUse this endpoint to mass assign users to courses by providing an array of course_id and user_id pairs in the request body. If the request is valid, the API processes each enrollment and returns the corresponding results.\n\nThis endpoint is ideal for bulk operations and large-scale user-course assignments."
+        },
+        {
+          "info": {
+            "name": "Upsert Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/batch/users",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Accept",
+                "value": "application/json"
+              },
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates multiple users in a single request.\n\nUse this endpoint to mass create or update users by providing an array of user objects in the request body. Each object may include core user attributes (such as login, name, email, and status) as well as custom user fields. If a user already exists, the body needs to have the corresponding id and their information will be updated. If the user does not exist, a new user is created.\n\nThis endpoint is ideal for bulk user provisioning, HRIS sy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

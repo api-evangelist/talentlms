@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions Category API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Category",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/categories",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### List all categories\n\nRetrieves a paginated list of all categories in your TalentLMS account. Upon a successful request, the API returns a JSON response containing category objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets."
+        },
+        {
+          "info": {
+            "name": "Get a category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/categories/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get a category\n\nRetrieves the full details of a specific category. To successfully fetch a category, include the category’s unique ID as a path parameter in the request URL. If the request is valid and the category exists, the API returns detailed information about the category, including its metadata and related configuration settings."
+        },
+        {
+          "info": {
+            "name": "Purchase a course category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/categories/:id/purchase",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Purchase a course category\n\nProvided the category ID in the endpoint's path and the user ID in the request's body a category can be purchased for this specific user. Optionally, you can specify the redirection url if the purchase is cancelled or succeeded and you can also provide a coupon key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

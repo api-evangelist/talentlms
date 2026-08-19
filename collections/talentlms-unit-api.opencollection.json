@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions Unit API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Unit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user's test/survey answers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/results",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "unit_id",
+                "value": "<integer>",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "<integer>",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "### Get user's test/survey answers\n\nRetrieve detailed test/survey results for a specific user and unit, including status, score, completion date, and a breakdown of answers for each question."
+        },
+        {
+          "info": {
+            "name": "Get ILT unit's sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/units/:id/sessions",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get ILT unit's sessions\n\nRetrieves the scheduled sessions of a specific Instructor-Led Training (ILT) unit. To successfully fetch session details, include the ILT unit’s unique ID as a path parameter in the request URL. If the request is valid and the unit exists, the API returns a JSON response containing information about all associated sessions, including their schedule and related metadata."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

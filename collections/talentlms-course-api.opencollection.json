@@ -1,0 +1,215 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions Course API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Course",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### List all courses\n\nRetrieves a paginated list of all courses in your TalentLMS account. Upon a successful request, the API returns a JSON response containing course objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets. You can optionally filter the response using course custom fields."
+        },
+        {
+          "info": {
+            "name": "Create course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Create course\n\nCreates a new course in your TalentLMS account. To successfully create a course, provide the required attributes (such as the course name, code, and other relevant details) in the request body. If the request is valid, the API creates the course and returns the newly created course object, including its unique ID. This endpoint allows you to define course properties such as description, category, pricing, visibility, and other configuration settings depending on your account s"
+        },
+        {
+          "info": {
+            "name": "Get a course",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/courses/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get a course\n\nRetrieves the full details of a specific course. To successfully fetch a course, include the course’s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API returns detailed information about the course, including its metadata, settings, and related attributes."
+        },
+        {
+          "info": {
+            "name": "Delete a course",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/courses/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Delete a course\n\nPermanently deletes a specific course from your TalentLMS account. To successfully remove a course, include the course’s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API deletes the course and returns a 204 No Content response upon success."
+        },
+        {
+          "info": {
+            "name": "Enroll user to course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/enrollments",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Enroll user to course\n\nEnrolls a user into a specific course. To create an enrollment, provide the user’s unique ID using the user_id attribute and the course’s unique **I**D using the course_id attribute in the request body. If the request is valid and both the user and course exist, the API creates the enrollment and returns the enrollment details in the response."
+        },
+        {
+          "info": {
+            "name": "Delete a user from a course",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/enrollments",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "### Delete a user from a course\n\nRemoves a user’s enrollment from a specific course. To successfully unenroll a user, provide the user’s unique ID using the `user_id` attribute and the course’s unique ID using the `course_id` attribute. If the request is valid and the enrollment exists, the API deletes the enrollment and removes the user’s access to the course."
+        },
+        {
+          "info": {
+            "name": "Goto Course",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/courses/:course_id/users/:user_id/goto",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ],
+            "params": [
+              {
+                "name": "logout_redirect",
+                "value": "<base64_encoded_url>",
+                "type": "query"
+              },
+              {
+                "name": "course_completed_redirect",
+                "value": "<base64_encoded_url>",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "### Goto Course\n\nProvided the course & user ID a goto url is returned for accessing the course with the specified ID. Optionally, the user is able to provide the encoded redirection urls when a user logs out or completes the course."
+        },
+        {
+          "info": {
+            "name": "Get course custom fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/course-fields",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get course custom fields\n\nRetrieves a paginated list of all custom fields defined for courses. Upon a successful request, the API returns a JSON response containing the available custom course fields, including their configuration details and metadata. Results are returned in a paginated format to support efficient data retrieval."
+        },
+        {
+          "info": {
+            "name": "Purchase a course",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/courses/:id/purchase",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Purchase a course\n\nProvided the course ID in the endpoint's path and the user ID in the request's body a course can be purchased for this specific user. Optionally, you can specify the redirection url if the purchase is cancelled or succeeded and you can also provide a coupon key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

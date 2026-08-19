@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions Branch API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Branch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/branches",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### List all branches\n\nRetrieves a paginated list of all branches in your TalentLMS account. Upon a successful request, the API returns a JSON response containing branch objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets."
+        },
+        {
+          "info": {
+            "name": "Create a branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/branches",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Create a branch\n\nCreates a new branch in your TalentLMS account. To successfully create a branch, provide the required branch attributes in the request body as a JSON object. If the request is valid, the API creates the branch and returns the newly created branch details, including its unique identifier."
+        },
+        {
+          "info": {
+            "name": "Get a branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/branches/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get a branch\n\nRetrieves the full details of a specific branch. To successfully fetch a branch, include the branch’s unique ID as a path parameter in the request URL. If the request is valid and the branch exists, the API returns detailed information about the branch, including its configuration settings and metadata."
+        },
+        {
+          "info": {
+            "name": "Delete a branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/branches/:id",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Delete a branch\n\nPermanently deletes a specific branch from your TalentLMS account. To successfully remove a branch, include the branch’s unique ID as a path parameter in the request URL. If the request is valid and the branch exists, the API deletes the branch and returns a **204 No Content** response upon success."
+        },
+        {
+          "info": {
+            "name": "Add user to branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/branch-users",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Add a user to a branch\n\nAssociates a user with a specific branch. To successfully add a user to a branch, provide the branch’s unique ID using the branch_id attribute and the user’s unique ID using the user_id attribute in the request body. If the request is valid and both the user and branch exist, the API creates the association and returns the corresponding branch-user relationship details."
+        },
+        {
+          "info": {
+            "name": "Remove user from branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/branch-users",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "docs": "### Remove user from branch\n\nRemoves a user from a specific branch. To successfully remove a user from a branch, provide the branch’s unique ID using the branch_id attribute and the user’s unique ID using the user_id attribute. If the request is valid and the association exists, the API deletes the branch-user relationship and returns a **204 No Content** response upon success."
+        },
+        {
+          "info": {
+            "name": "Add course to branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://your-domain.talentlms.com/api/v2/branch-courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Add course to branch\n\nAssociates a course with a specific branch. To successfully assign a course to a branch, provide the course’s unique ID using the course_id attribute and the branch’s unique ID using the branch_id attribute in the request body. If the request is valid and both the course and branch exist, the API creates the association and returns the corresponding branch-course relationship details."
+        },
+        {
+          "info": {
+            "name": "Remove course from branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://your-domain.talentlms.com/api/v2/branch-courses",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Remove course from branch\n\nRemoves a course from a specific branch. To successfully remove a course from a branch, provide the course's unique ID using the `course_id` attribute and the branch's unique ID using the `branch_id` attribute in the request body. If the request is valid and the association exists, the API deletes the branch-course relationship and returns a 204 No Content response upon success."
+        },
+        {
+          "info": {
+            "name": "Change branch status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://your-domain.talentlms.com/api/v2/branches/:id/status",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the branch"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "### Change branch status. Activates or deactivates a specific branch. To update the branch status, include the branch's unique ID as a path parameter in the request URL and provide a boolean value for the is_active attribute in the request body. If the request is valid and the branch exists, the API updates the branch's status accordingly and returns the updated branch details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

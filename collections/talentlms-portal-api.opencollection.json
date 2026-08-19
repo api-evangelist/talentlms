@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TalentLMS Public Batch Actions Portal API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Portal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get portal's statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/statistics",
+            "headers": [
+              {
+                "name": "X-API-Version",
+                "value": "{{apiVersion}}"
+              }
+            ]
+          },
+          "docs": "### Get portal's statistics\n\nRetrieve platform-wide statistics, such as total users, courses, categories, groups, branches, and configuration details, by sending an authenticated GET request to this endpoint and receiving a report as a JSON object."
+        },
+        {
+          "info": {
+            "name": "Health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://your-domain.talentlms.com/api/v2/health"
+          },
+          "docs": "Health check"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

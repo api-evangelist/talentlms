@@ -1,0 +1,1025 @@
+{
+  "item": [
+    {
+      "id": "364930bd-66c5-4625-bfd5-b9a7f06c64f5",
+      "name": "Branch",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1346129d-036a-4742-998f-886fa1479bef",
+          "name": "List all branches",
+          "request": {
+            "name": "List all branches",
+            "description": {
+              "content": "### List all branches\n\nRetrieves a paginated list of all branches in your TalentLMS account. Upon a successful request, the API returns a JSON response containing branch objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd68dbf2-b6a1-40b5-a176-408a2159419f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "430de4c7-e8f6-486d-9aa3-de10cb9991df",
+          "name": "Create a branch",
+          "request": {
+            "name": "Create a branch",
+            "description": {
+              "content": "### Create a branch\n\nCreates a new branch in your TalentLMS account. To successfully create a branch, provide the required branch attributes in the request body as a JSON object. If the request is valid, the API creates the branch and returns the newly created branch details, including its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca7d42ae-5def-49dc-bd94-67b8467cfcb4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"default_locale\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dfe6024-3dff-4be8-95b6-2e6bbc220d99",
+          "name": "Get a branch",
+          "request": {
+            "name": "Get a branch",
+            "description": {
+              "content": "### Get a branch\n\nRetrieves the full details of a specific branch. To successfully fetch a branch, include the branch’s unique ID as a path parameter in the request URL. If the request is valid and the branch exists, the API returns detailed information about the branch, including its configuration settings and metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branches",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f67ba62-bb7a-4244-b864-f376958443b0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branches",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "defd20b2-590d-4b0f-992f-faa243ea6230",
+          "name": "Delete a branch",
+          "request": {
+            "name": "Delete a branch",
+            "description": {
+              "content": "### Delete a branch\n\nPermanently deletes a specific branch from your TalentLMS account. To successfully remove a branch, include the branch’s unique ID as a path parameter in the request URL. If the request is valid and the branch exists, the API deletes the branch and returns a **204 No Content** response upon success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branches",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "faa8cd3b-0acc-408f-b11c-3a80a84d70c6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branches",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "953de9d3-55c1-47a4-99b3-2056b26b368c",
+          "name": "Add user to branch",
+          "request": {
+            "name": "Add user to branch",
+            "description": {
+              "content": "### Add a user to a branch\n\nAssociates a user with a specific branch. To successfully add a user to a branch, provide the branch’s unique ID using the branch_id attribute and the user’s unique ID using the user_id attribute in the request body. If the request is valid and both the user and branch exist, the API creates the association and returns the corresponding branch-user relationship details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branch-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b983d1f-c9f4-49c2-8d20-052511dff445",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branch-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"branch_id\": \"<integer>\",\n  \"user_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2e23a89-a899-4544-ba37-3bec14d2986f",
+          "name": "Remove user from branch",
+          "request": {
+            "name": "Remove user from branch",
+            "description": {
+              "content": "### Remove user from branch\n\nRemoves a user from a specific branch. To successfully remove a user from a branch, provide the branch’s unique ID using the branch_id attribute and the user’s unique ID using the user_id attribute. If the request is valid and the association exists, the API deletes the branch-user relationship and returns a **204 No Content** response upon success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branch-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3719a97e-2f48-4c5c-82b6-8b6452001fd3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branch-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43ba0b88-8a77-40ff-aab1-91850702b99d",
+          "name": "Add course to branch",
+          "request": {
+            "name": "Add course to branch",
+            "description": {
+              "content": "### Add course to branch\n\nAssociates a course with a specific branch. To successfully assign a course to a branch, provide the course’s unique ID using the course_id attribute and the branch’s unique ID using the branch_id attribute in the request body. If the request is valid and both the course and branch exist, the API creates the association and returns the corresponding branch-course relationship details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branch-courses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "321ae9a2-5ceb-4dfc-a34b-597a129b2ce2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branch-courses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"branch_id\": \"<integer>\",\n  \"course_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e648bc5-5df1-457d-a0f7-2ec6568a7141",
+          "name": "Remove course from branch",
+          "request": {
+            "name": "Remove course from branch",
+            "description": {
+              "content": "### Remove course from branch\n\nRemoves a course from a specific branch. To successfully remove a course from a branch, provide the course's unique ID using the `course_id` attribute and the branch's unique ID using the `branch_id` attribute in the request body. If the request is valid and the association exists, the API deletes the branch-course relationship and returns a 204 No Content response upon success.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branch-courses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e294d3b-b415-4607-9cd8-651a983f3c1a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branch-courses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79a07f21-d7f0-46b4-a64f-34df7f0ec632",
+          "name": "Change branch status",
+          "request": {
+            "name": "Change branch status",
+            "description": {
+              "content": "### Change branch status. Activates or deactivates a specific branch. To update the branch status, include the branch's unique ID as a path parameter in the request URL and provide a boolean value for the is_active attribute in the request body. If the request is valid and the branch exists, the API updates the branch's status accordingly and returns the updated branch details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "branches",
+                ":id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the branch"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-API-Version",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"is_active\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d33a522-9f5e-4b62-b341-f086fa4ffa65",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "branches",
+                    ":id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the branch"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-API-Version",
+                    "value": "{{apiVersion}}",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://your-domain.talentlms.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aa22f348-c0c3-4019-83ab-5dd255820f5d",
+    "name": "TalentLMS Public Batch Actions Branch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly. It is organized around Representational State Transfer (REST) and is built to leverage standard HTTP features such as HTTP authentication and HTTP response codes, ensuring seamless integration. All API responses, including error messages, are consistently formatted in JSON for easy parsing and handling.\n\nIf your TalentLMS domain is called “samples”, then the API endpoint for your domain is [<code>https://samples.talentlms.com/api/v2</code>](https://samples.talentlms.com/api).\n\nThe current version of the API consumes data – information about users, courses, categories, groups, branches, and general details about your domain. Apart from that, via the API you can log in / sign up a user in your domain, enroll a user in a course, and much more. Please make sure, that you are accessing the URLs below, under HTTPs connections, otherwise, you will receive an error.\n\n## 🚀 **Getting Started Guide**\n\nTo start using the TalentLMS API, you must first [enable the API and generate a valid API](https://help.talentlms.com/hc/en-us/articles/9651527213468-Can-I-integrate-my-site-with-TalentLMS-Do-you-offer-an-API) key from the portal's settings (Account & Settings > Integrations > API).\n\n**Keep in mind:**\n\n- The pagination limit of each request is 100.\n    \n- The API has rate and usage limits (e.g. 2000 requests per hour).\n    \n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key (All calls must have an Accept: application/json header value).\n    \n- In each request you must add the desired version of the API by adding the header option with the key `X-API-Version` and value (the format of the version must be `YYYY-MM-DD`).\n    \n## 🔐 Authentication\n\nAll of the requests require authentication. Our API uses the `API Key` authorization method, with key `X-API-Key` and value `your_api_key`. You can always fill these fields in the global variables or create an environment and insert them there.\n\n### ⛔️ Authentication error response\n\nYou will receive an HTTP 401 Unauthorized response code if the API key is missing, incorrectly formatted, or invalid.\n\n### ✅ API Responses\n\nTalentLMS API uses HTTP response codes to indicate the success or failure of requests. Specifically, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided arguments (e.g. instead of an integer a string is supplied), and the 500 error code indicates an internal TalentLMS error. Please be aware that you will receive an error too, in case you try to access an endpoint via non HTTPs connection.\n\nAll errors return JSON consisting of a type (invalid_request_error or api_error) and a message describing the error.\n\n| **Code** | **Description** |\n| --- | --- |\n| 200 | The request was executed properly and a JSON response is returned. |\n| 204 | No content, and the operation was executed successfully. |\n| 400 | A required parameter is missing or an invalid type (e.g. a string) was supplied instead of an integer. |\n| 401 | Invalid API key provided. |\n| 403 | API is not enabled for the specified domain or the domain is currently inactive. |\n| 404 | The requested resource (e.g. user) does not exist. |\n| 422 | Malformed response. |\n| 429 | The API request rate limit has been exceeded. |\n| 500 | Internal server error. |\n\n### 🛑 Rate Limits\n\nRate limits represent the maximum number of API requests that are permitted to be made  \nper hour. These limits depend on your subscription plan and are as follows:\n\n| **Plan** | **Limit** |\n| --- | --- |\n| Core | 2.000 |\n| Grow | 10.000 |\n| Pro | 10.000 |\n| Small | 2.000 |\n| Basic | 2.000 |\n| Plus | 10.000 |\n| Premium | 10.000 |\n| Custom | Contact us so we can create a plan that fits your needs |\n\nRegardless of the total API requests per hour provisioned per customer, each customer's API requests should not exceed the rate of 200 API calls per 5 seconds. The following headers are included in API responses to help manage rate limits:\n\n- **`X-RateLimit-Limit`**: The maximum number of requests allowed in the current time window\n    \n- **`X-RateLimit-Remaining`**: The number of requests left in the current window before hitting the limit\n    \n### 📄 Pagination\n\nOur API supports pagination, splitting responses into size-customizable chunks of up to 100 items per request. You can navigate to the first, last, previous, or next page. The endpoints that support pagination return a list formatted as shown below:\n\n``` json\n{\n        \"self\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"first\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"last\": \"https://example.talentlms.com/api/v2/users?page[number]=4&page[size]=10\",\n        \"prev\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"next\": \"https://example.talentlms.com/api/v2/users?page[number]=2&page[size]=10\"\n}\n\n ```",
+      "type": "text/plain"
+    }
+  }
+}
