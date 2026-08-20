@@ -31,6 +31,17 @@ specificationVersion: '0.23'
 tags:
   - Learning Management System
   - LMS
+  - E-Learning
+  - Training
+  - Courses
+  - User
+  - Enrollments
+  - Education
+  - HR Tech
+  - Cloud
+tags_raw:
+  - Learning Management System
+  - LMS
   - eLearning
   - Training
   - Courses
@@ -50,6 +61,15 @@ apis:
   humanURL: https://developers.talentlms.io/
   baseURL: https://{domain}.talentlms.com/api/v2
   tags:
+  - User
+  - Courses
+  - Categories
+  - Branches
+  - Group
+  - Enrollments
+  - Reports
+  - Assessments
+  tags_raw:
   - Users
   - Courses
   - Categories
@@ -114,6 +134,8 @@ apis:
   humanURL: https://developers.talentlms.io/
   baseURL: https://{domain}.talentlms.com/api/v2
   tags:
+  - course
+  tags_raw:
   - Course
   properties:
   - type: OpenAPI
@@ -164,6 +186,8 @@ apis:
   humanURL: https://developers.talentlms.io/
   baseURL: https://{domain}.talentlms.com/api/v2
   tags:
+  - Timelines
+  tags_raw:
   - Timeline
   properties:
   - type: OpenAPI
