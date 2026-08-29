@@ -1,0 +1,27 @@
+slug: talentlms
+provider: TalentLMS
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Course
+  spec_file: talentlms-course-api-openapi.yml
+  capability_id: BC-4700
+  capability_id_l1: BC-4700
+  capability_name: Curriculum & Programme Management
+  confidence: 0.7
+  evidence: '''POST /api/v2/courses  Create course'', ''GET /api/v2/course-fields  Get course custom fields'',
+    ''POST /api/v2/enrollments  Enroll user to course'''
+  reason: The tag manages the course as a unit of learning — creation, retrieval, custom fields and catalogue
+    purchase — which is course/curriculum definition (BC-4700). L2 left null because the surface mixes
+    course definition with learner enrolment and purchase, so neither Course & Module Design nor Programme
+    Catalogue Management is clearly the narrower fit.

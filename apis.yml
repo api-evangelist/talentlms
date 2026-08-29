@@ -227,6 +227,9 @@ apis:
   - type: OpenAPI
     url: openapi/talentlms-user-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/talentlms-capability-edges.yml
+    name: TalentLMS Business Capability Map
   - type: IssueTracker
     url: https://github.com/Trifoia/talentlms-sdk/issues
   - type: License
