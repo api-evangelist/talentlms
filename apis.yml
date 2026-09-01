@@ -45,7 +45,7 @@ specificationVersion: '0.23'
 tags:
   - Learning Management System
   - LMS
-  - eLearning
+  - E-Learning
   - Training
   - Courses
   - User
@@ -148,7 +148,7 @@ apis:
   humanURL: https://developers.talentlms.io/
   baseURL: https://{domain}.talentlms.com/api/v2
   tags:
-  - course
+  - Course
   tags_raw:
   - Course
   properties:
