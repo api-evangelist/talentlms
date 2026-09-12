@@ -228,6 +228,8 @@ apis:
   - type: OpenAPI
     url: openapi/talentlms-user-api-openapi.yml
 common:
+  - type: Website
+    url: https://www.talentlms.com/
   - type: CapabilityMap
     url: capabilities/talentlms-capability-edges.yml
     name: TalentLMS Business Capability Map
