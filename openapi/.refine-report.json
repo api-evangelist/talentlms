@@ -1,17 +1,7 @@
 {
   "provider": "talentlms",
   "sources": [
-    "talentlms-batch-actions-api-openapi.yml",
-    "talentlms-branch-api-openapi.yml",
-    "talentlms-category-api-openapi.yml",
-    "talentlms-course-api-openapi.yml",
-    "talentlms-group-api-openapi.yml",
-    "talentlms-learning-paths-api-openapi.yml",
-    "talentlms-portal-api-openapi.yml",
-    "talentlms-task-api-openapi.yml",
-    "talentlms-timeline-api-openapi.yml",
-    "talentlms-unit-api-openapi.yml",
-    "talentlms-user-api-openapi.yml"
+    "_original/talentlms-openapi.yaml"
   ],
   "outputs": [
     "talentlms-batch-actions-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "talentlms-openapi.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "talentlms-batch-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-branch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-category-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-course-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-group-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-learning-paths-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-portal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-task-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-timeline-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-unit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "talentlms-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
