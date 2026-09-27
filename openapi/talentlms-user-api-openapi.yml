@@ -965,20 +965,36 @@ paths:
                 type: object
 components:
   schemas:
-    UserGamification:
-      required:
-      - points
-      - level
-      - badges
+    PaginationLinks:
       properties:
-        points:
-          type: integer
-        level:
-          type: integer
-        badges:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGamificationBadge'
+        self:
+          type: string
+        first:
+          type: string
+        last:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+      type: object
+    PaginationMeta:
+      properties:
+        pagination:
+          properties:
+            page:
+              type: integer
+              example: 1
+            page_size:
+              type: integer
+              example: 25
+            total_items:
+              type: integer
+            total_pages:
+              type: integer
+            total_results:
+              type: integer
+          type: object
       type: object
     UserGamificationBadge:
       required:
@@ -1002,6 +1018,21 @@ components:
           type: integer
         badge_set_id:
           type: integer
+      type: object
+    UserGamification:
+      required:
+      - points
+      - level
+      - badges
+      properties:
+        points:
+          type: integer
+        level:
+          type: integer
+        badges:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGamificationBadge'
       type: object
     UserListItem:
       properties:
@@ -1064,37 +1095,6 @@ components:
           type:
           - string
           - 'null'
-      type: object
-    PaginationLinks:
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        last:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-      type: object
-    PaginationMeta:
-      properties:
-        pagination:
-          properties:
-            page:
-              type: integer
-              example: 1
-            page_size:
-              type: integer
-              example: 25
-            total_items:
-              type: integer
-            total_pages:
-              type: integer
-            total_results:
-              type: integer
-          type: object
       type: object
   securitySchemes:
     apikeyAuth:
