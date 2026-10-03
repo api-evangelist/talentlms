@@ -965,19 +965,6 @@ paths:
                 type: object
 components:
   schemas:
-    PaginationLinks:
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        last:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-      type: object
     PaginationMeta:
       properties:
         pagination:
@@ -995,29 +982,6 @@ components:
             total_results:
               type: integer
           type: object
-      type: object
-    UserGamificationBadge:
-      required:
-      - name
-      - type
-      - image_url
-      - criteria
-      - issued_on
-      - badge_set_id
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        image_url:
-          type: string
-        criteria:
-          type: string
-        issued_on:
-          description: Unix timestamp
-          type: integer
-        badge_set_id:
-          type: integer
       type: object
     UserGamification:
       required:
@@ -1095,6 +1059,42 @@ components:
           type:
           - string
           - 'null'
+      type: object
+    PaginationLinks:
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        last:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
+      type: object
+    UserGamificationBadge:
+      required:
+      - name
+      - type
+      - image_url
+      - criteria
+      - issued_on
+      - badge_set_id
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        image_url:
+          type: string
+        criteria:
+          type: string
+        issued_on:
+          description: Unix timestamp
+          type: integer
+        badge_set_id:
+          type: integer
       type: object
   securitySchemes:
     apikeyAuth:

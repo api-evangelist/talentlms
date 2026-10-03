@@ -263,19 +263,6 @@ paths:
                 type: object
 components:
   schemas:
-    PaginationLinks:
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        last:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-      type: object
     GroupCourseItem:
       properties:
         id:
@@ -307,6 +294,19 @@ components:
             total_results:
               type: integer
           type: object
+      type: object
+    PaginationLinks:
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        last:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
       type: object
   securitySchemes:
     apikeyAuth:
