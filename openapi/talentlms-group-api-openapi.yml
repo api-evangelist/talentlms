@@ -263,19 +263,18 @@ paths:
                 type: object
 components:
   schemas:
-    GroupCourseItem:
+    PaginationLinks:
       properties:
-        id:
-          type: integer
-          example: 1
-        name:
+        self:
           type: string
-          example: Introduction to LMS
-        code:
-          type:
-          - string
-          - 'null'
-          example: ADV-101
+        first:
+          type: string
+        last:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
       type: object
     PaginationMeta:
       properties:
@@ -295,18 +294,19 @@ components:
               type: integer
           type: object
       type: object
-    PaginationLinks:
+    GroupCourseItem:
       properties:
-        self:
+        id:
+          type: integer
+          example: 1
+        name:
           type: string
-        first:
-          type: string
-        last:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
+          example: Introduction to LMS
+        code:
+          type:
+          - string
+          - 'null'
+          example: ADV-101
       type: object
   securitySchemes:
     apikeyAuth:
