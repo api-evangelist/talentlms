@@ -263,19 +263,6 @@ paths:
                 type: object
 components:
   schemas:
-    PaginationLinks:
-      properties:
-        self:
-          type: string
-        first:
-          type: string
-        last:
-          type: string
-        prev:
-          type: string
-        next:
-          type: string
-      type: object
     PaginationMeta:
       properties:
         pagination:
@@ -307,6 +294,19 @@ components:
           - string
           - 'null'
           example: ADV-101
+      type: object
+    PaginationLinks:
+      properties:
+        self:
+          type: string
+        first:
+          type: string
+        last:
+          type: string
+        prev:
+          type: string
+        next:
+          type: string
       type: object
   securitySchemes:
     apikeyAuth:
