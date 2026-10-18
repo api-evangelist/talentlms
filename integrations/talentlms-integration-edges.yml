@@ -4,6 +4,7 @@ checked:
 - adp/integrations/adp-integration-edges.yml
 - bamboohr/integrations/bamboohr-integration-edges.yml
 - https://zapier.com/api/v4/apps/
+- zoom/integrations/zoom-integration-edges.yml
 source:
 - adp/integrations/adp-integration-edges.yml
 - bamboohr/integrations/bamboohr-integration-edges.yml
@@ -67,3 +68,20 @@ edges:
     builder: unknown (not in the directory record)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Zoom (own)
+  partner: zoom
+  partner_match: mirror
+  mirror_match: domain+product
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.zoom.us/apps/DV7eAnZKRU2e1O-DLyjvFg
+  mirror_of: zoom/integrations/zoom-integration-edges.yml
+  apps:
+  - TalentLMS
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Zoom app
