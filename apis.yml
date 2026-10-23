@@ -227,6 +227,8 @@ apis:
   - type: OpenAPI
     url: openapi/talentlms-user-api-openapi.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/talentlms/overview
   - type: Website
     url: https://www.talentlms.com/
   - type: CapabilityMap
