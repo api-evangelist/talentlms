@@ -1,1025 +1,1016 @@
 {
+  "info": {
+    "_postman_id": "62cd2e11-9de6-4527-82ad-0b2818a36ea1",
+    "name": "TalentLMS Public Group API",
+    "description": "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:57:21.000Z",
+    "updatedAt": "2026-10-22T01:57:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-62cd2e11-9de6-4527-82ad-0b2818a36ea1"
+  },
   "item": [
     {
-      "id": "ede1744d-3a6b-4afa-a3f6-cc7a989b849f",
-      "name": "Group",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "7ae801f1-3710-4af9-8864-f68d3166a177",
-          "name": "List all groups",
-          "request": {
-            "name": "List all groups",
-            "description": {
-              "content": "### List all groups\n\nRetrieves a paginated list of all groups in your TalentLMS account. Upon a successful request, the API returns a JSON response containing group objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "groups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "d532b106-ea6a-4288-b20e-4e00d67c5b39",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "groups",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1ff9708c-2b6e-4079-9ad0-12003268d594",
-          "name": "Create a group",
-          "request": {
-            "name": "Create a group",
-            "description": {
-              "content": "### Create a group\n\nCreates a new group in your TalentLMS account. To successfully create a group, provide the required group attributes in the request body. If the request is valid, the API creates the group and returns the newly created group object, including its unique ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "groups"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "cbf27e9a-9446-4db2-836a-33b5dbfa65bb",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "groups"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "disabled": false,
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"key\": \"<string>\",\n  \"max_key_redemptions\": \"<integer>\",\n  \"price\": \"<float>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c3b67452-96ab-4abc-a336-adfcb3e55c3a",
-          "name": "Get a group",
-          "request": {
-            "name": "Get a group",
-            "description": {
-              "content": "### Get a group\n\nRetrieves the full details of a specific group. To successfully fetch a group, include the group’s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API returns detailed information about the group, including its metadata, assigned users, and related configuration settings (where applicable).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "groups",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "6a3f7e35-ec36-4876-bd8d-667699e5b19f",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "groups",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "87119011-e0f0-4ebd-b387-2c888ec6604c",
-          "name": "Delete a group",
-          "request": {
-            "name": "Delete a group",
-            "description": {
-              "content": "### Delete a group\n\nPermanently deletes a specific group from your TalentLMS account. To successfully remove a group, include the group’s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API deletes the group and returns a **204 No Content** response upon success.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "groups",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0aa83a56-ddeb-4ec0-810d-38b762246008",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "groups",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4b3456e2-1eb8-4dd1-b85a-28fb20dd373e",
-          "name": "Add a user to a group",
-          "request": {
-            "name": "Add a user to a group",
-            "description": {
-              "content": "### Add a user to a group\n\nAdds a user to a specific group. To create a group membership, provide the user’s unique ID using the user_id attribute and the group’s unique ID using the group_id attribute in the request body. If the request is valid and both the user and group exist, the API creates the membership and returns the corresponding group membership details.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "group-memberships"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f265216f-9569-42b0-bd53-91798e2e67d8",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "group-memberships"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "disabled": false,
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"group_id\": \"<integer>\",\n  \"user_id\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2c3aff5c-aa60-4249-bdf7-abb9b90ed9bc",
-          "name": "Remove user from a group",
-          "request": {
-            "name": "Remove user from a group",
-            "description": {
-              "content": "### Remove user from a group\n\nRemoves a user from a specific group. To delete a group membership, provide the user’s unique ID using the user_id attribute and the group’s unique ID using the group_id attribute. If the request is valid and the membership exists, the API removes the user from the specified group and returns a **204 No Content** response upon success.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "group-memberships"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9fabd9d0-6f9d-4301-bcf1-6f1a7aa22da5",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "group-memberships"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "disabled": false,
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "da114a4d-f25f-435a-b742-9dbba4759cde",
-          "name": "Add a course to a group",
-          "request": {
-            "name": "Add a course to a group",
-            "description": {
-              "content": "### Add a course to a group\n\nAssociates a course with a specific group. To assign a course to a group, provide the course’s unique ID using the course_id attribute and the group’s unique ID using the group_id attribute in the request body. If the request is valid and both the course and group exist, the API creates the association and returns the corresponding group-course relationship details.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "group-courses"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "8efc285f-cdbd-483b-aeb2-68a1ad18e84f",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "group-courses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "disabled": false,
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"group_id\": \"<integer>\",\n  \"course_id\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "af82482a-d26e-4b79-9b0b-67c6d9d8091a",
-          "name": "Remove course from group",
-          "request": {
-            "name": "Remove course from group",
-            "description": {
-              "content": "### Remove course from group\n\nRemoves a course from a specific group. To successfully remove a course from a group, provide the group's unique ID using the `group_id` attribute and the course's unique ID using the `course_id` attribute in the request body. If the request is valid and the association exists, the API deletes the group-course relationship and returns a 204 No Content response upon success.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "group-courses"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "26523827-1ec4-4acb-8c80-b8e7b3b0719a",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "group-courses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "45acfb55-665d-47f4-9bb5-0b0d458fdb58",
-          "name": "Get group courses",
-          "request": {
-            "name": "Get group courses",
-            "description": {
-              "content": "Returns a paginated list of courses assigned to a group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "groups",
-                ":id",
-                "courses"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<integer>",
-                  "key": "id",
-                  "description": "(Required) The ID of the group"
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a366f671-c681-45fe-b919-e010cbaa9473",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "groups",
-                    ":id",
-                    "courses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": ":id",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) The ID of the group"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                      "name": "Get a group",
+                      "id": "a81fe4d2-8cd0-4c8d-82c2-0d3f52dbb831",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/groups/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "groups",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "86e27f39-743d-416c-b05a-5fa44186c22b",
+                              "key": "id"
+                            }
+                          ]
+                        },
+                        "description": "### Get a group\n\nRetrieves the full details of a specific group. To successfully fetch a group, include the group\u2019s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API returns detailed information about the group, including its metadata, assigned users, and related configuration settings (where applicable)."
+                      },
+                      "response": [
+                        {
+                          "id": "15bf4cf3-1ab3-43e1-8e3e-13d6f6f75e3a",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-API-Version",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/groups/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "groups",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:57:21.000Z",
+                          "updatedAt": "2026-10-22T01:57:21.000Z",
+                          "uid": "35240-15bf4cf3-1ab3-43e1-8e3e-13d6f6f75e3a"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-a81fe4d2-8cd0-4c8d-82c2-0d3f52dbb831"
                     },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                    {
+                      "name": "Delete a group",
+                      "id": "c361cacc-9908-488e-8be8-7861552b4f7f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/groups/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "groups",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3df70635-6f51-4c05-883f-74f4ea2037fa",
+                              "key": "id"
+                            }
+                          ]
+                        },
+                        "description": "### Delete a group\n\nPermanently deletes a specific group from your TalentLMS account. To successfully remove a group, include the group\u2019s unique ID as a path parameter in the request URL. If the request is valid and the group exists, the API deletes the group and returns a **204 No Content** response upon success."
+                      },
+                      "response": [
+                        {
+                          "id": "5344a015-d770-4e6f-8ffd-3745907170ba",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "X-API-Version",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/groups/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "groups",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:57:21.000Z",
+                          "updatedAt": "2026-10-22T01:57:21.000Z",
+                          "uid": "35240-5344a015-d770-4e6f-8ffd-3745907170ba"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-c361cacc-9908-488e-8be8-7861552b4f7f"
+                    }
+                  ],
+                  "id": "2361e50e-de9f-4902-94c4-ff0bd2bfa30f",
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-2361e50e-de9f-4902-94c4-ff0bd2bfa30f"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "courses",
+                      "item": [
+                        {
+                          "name": "Get group courses",
+                          "id": "0ea2ac2d-d9d8-465c-88f4-a7f48f5a3b38",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-API-Version",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/groups/:id/courses",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "groups",
+                                ":id",
+                                "courses"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c7ed288a-8a3b-4261-be15-9c1fe132523e",
+                                  "key": "id",
+                                  "value": "<integer>",
+                                  "description": "(Required) The ID of the group"
+                                }
+                              ]
+                            },
+                            "description": "Returns a paginated list of courses assigned to a group."
+                          },
+                          "response": [
+                            {
+                              "id": "0fd7c54a-df4a-456a-8a5f-fc1494ef335b",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-API-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-API-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/groups/:id/courses",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "groups",
+                                    ":id",
+                                    "courses"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_data\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"code\": \"<string,null>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"code\": \"<string,null>\"\n    }\n  ],\n  \"_links\": {\n    \"self\": \"<string>\",\n    \"first\": \"<string>\",\n    \"last\": \"<string>\",\n    \"prev\": \"<string>\",\n    \"next\": \"<string>\"\n  },\n  \"_meta\": {\n    \"pagination\": {\n      \"page\": \"<integer>\",\n      \"page_size\": \"<integer>\",\n      \"total_items\": \"<integer>\",\n      \"total_pages\": \"<integer>\",\n      \"total_results\": \"<integer>\"\n    }\n  }\n}",
+                              "createdAt": "2026-10-22T01:57:21.000Z",
+                              "updatedAt": "2026-10-22T01:57:21.000Z",
+                              "uid": "35240-0fd7c54a-df4a-456a-8a5f-fc1494ef335b"
+                            },
+                            {
+                              "id": "64ad384f-9f09-4e97-bc96-cd868242e0c1",
+                              "name": "Group not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-API-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-API-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/groups/:id/courses",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "groups",
+                                    ":id",
+                                    "courses"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-22T01:57:21.000Z",
+                              "updatedAt": "2026-10-22T01:57:21.000Z",
+                              "uid": "35240-64ad384f-9f09-4e97-bc96-cd868242e0c1"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:57:21.000Z",
+                          "updatedAt": "2026-10-22T01:57:21.000Z",
+                          "uid": "35240-0ea2ac2d-d9d8-465c-88f4-a7f48f5a3b38"
+                        }
+                      ],
+                      "id": "27cc8e5f-f7a2-4463-af34-182522182484",
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-27cc8e5f-f7a2-4463-af34-182522182484"
+                    }
+                  ],
+                  "id": "02c87032-b9a0-458c-9b0b-66060cd63299",
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-02c87032-b9a0-458c-9b0b-66060cd63299"
+                },
+                {
+                  "name": "List all groups",
+                  "id": "d4cc54b8-1787-432e-95c8-d9bac9eb7a3b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "groups"
+                      ]
+                    },
+                    "description": "### List all groups\n\nRetrieves a paginated list of all groups in your TalentLMS account. Upon a successful request, the API returns a JSON response containing group objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets."
+                  },
+                  "response": [
+                    {
+                      "id": "a04cabcc-0916-4f66-9aac-d8f9576064a5",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "groups"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-a04cabcc-0916-4f66-9aac-d8f9576064a5"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-d4cc54b8-1787-432e-95c8-d9bac9eb7a3b"
+                },
+                {
+                  "name": "Create a group",
+                  "id": "7196406a-5695-421e-a8ea-51b20c609236",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "groups"
+                      ]
+                    },
+                    "description": "### Create a group\n\nCreates a new group in your TalentLMS account. To successfully create a group, provide the required group attributes in the request body. If the request is valid, the API creates the group and returns the newly created group object, including its unique ID."
+                  },
+                  "response": [
+                    {
+                      "id": "47c2a21f-27de-4f62-a12f-5a448e046952",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "groups"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-47c2a21f-27de-4f62-a12f-5a448e046952"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-7196406a-5695-421e-a8ea-51b20c609236"
                 }
               ],
-              "body": "{\n  \"_data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Introduction to LMS\",\n      \"code\": \"ADV-101\"\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Introduction to LMS\",\n      \"code\": \"ADV-101\"\n    }\n  ],\n  \"_links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  },\n  \"_meta\": {\n    \"pagination\": {\n      \"page\": 1,\n      \"page_size\": 25,\n      \"total_items\": 8226,\n      \"total_pages\": 8881,\n      \"total_results\": 7697\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5b580d53-409d-4cfe-82a4-f7a5d15340e3",
+              "createdAt": "2026-10-22T01:57:21.000Z",
+              "updatedAt": "2026-10-22T01:57:21.000Z",
+              "uid": "35240-5b580d53-409d-4cfe-82a4-f7a5d15340e3"
             },
             {
-              "id": "6bbf90c3-57ce-4520-a51a-9a9fc5ced0d8",
-              "name": "Group not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "groups",
-                    ":id",
-                    "courses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<integer>",
-                      "key": "id",
-                      "description": "(Required) The ID of the group"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "name": "group-memberships",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Add a user to a group",
+                  "id": "09d8cb1b-f4dd-4599-bd9f-c9fd21e8879c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/group-memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "group-memberships"
+                      ]
+                    },
+                    "description": "### Add a user to a group\n\nAdds a user to a specific group. To create a group membership, provide the user\u2019s unique ID using the user_id attribute and the group\u2019s unique ID using the group_id attribute in the request body. If the request is valid and both the user and group exist, the API creates the membership and returns the corresponding group membership details."
+                  },
+                  "response": [
+                    {
+                      "id": "99447f1a-3045-4d7a-b72c-bd14d2885154",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group-memberships",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group-memberships"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-99447f1a-3045-4d7a-b72c-bd14d2885154"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-09d8cb1b-f4dd-4599-bd9f-c9fd21e8879c"
+                },
+                {
+                  "name": "Remove user from a group",
+                  "id": "2a17fd11-c89f-46ba-91c0-835cf705f99c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/group-memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "group-memberships"
+                      ]
+                    },
+                    "description": "### Remove user from a group\n\nRemoves a user from a specific group. To delete a group membership, provide the user\u2019s unique ID using the user_id attribute and the group\u2019s unique ID using the group_id attribute. If the request is valid and the membership exists, the API removes the user from the specified group and returns a **204 No Content** response upon success."
+                  },
+                  "response": [
+                    {
+                      "id": "89d0768b-4ae4-4cd0-bda1-6462f5aaa8f1",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group-memberships",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group-memberships"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-89d0768b-4ae4-4cd0-bda1-6462f5aaa8f1"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-2a17fd11-c89f-46ba-91c0-835cf705f99c"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "80bab7f5-4f33-47e1-b56a-6e95aef24f79",
+              "createdAt": "2026-10-22T01:57:21.000Z",
+              "updatedAt": "2026-10-22T01:57:21.000Z",
+              "uid": "35240-80bab7f5-4f33-47e1-b56a-6e95aef24f79"
+            },
+            {
+              "name": "group-courses",
+              "item": [
+                {
+                  "name": "Add a course to a group",
+                  "id": "64094b86-9c06-4b61-ad14-657a3fad9bb7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/group-courses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "group-courses"
+                      ]
+                    },
+                    "description": "### Add a course to a group\n\nAssociates a course with a specific group. To assign a course to a group, provide the course\u2019s unique ID using the course_id attribute and the group\u2019s unique ID using the group_id attribute in the request body. If the request is valid and both the course and group exist, the API creates the association and returns the corresponding group-course relationship details."
+                  },
+                  "response": [
+                    {
+                      "id": "7182ec89-347d-4445-b342-7511ec850058",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group-courses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group-courses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-7182ec89-347d-4445-b342-7511ec850058"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-64094b86-9c06-4b61-ad14-657a3fad9bb7"
+                },
+                {
+                  "name": "Remove course from group",
+                  "id": "f73091ae-ceb4-4677-afdb-cc5a569fd567",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/group-courses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "group-courses"
+                      ]
+                    },
+                    "description": "### Remove course from group\n\nRemoves a course from a specific group. To successfully remove a course from a group, provide the group's unique ID using the `group_id` attribute and the course's unique ID using the `course_id` attribute in the request body. If the request is valid and the association exists, the API deletes the group-course relationship and returns a 204 No Content response upon success."
+                  },
+                  "response": [
+                    {
+                      "id": "f4f12dd1-f4b0-4adb-af71-38c07d2bd4f7",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/group-courses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "group-courses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:21.000Z",
+                      "updatedAt": "2026-10-22T01:57:21.000Z",
+                      "uid": "35240-f4f12dd1-f4b0-4adb-af71-38c07d2bd4f7"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:21.000Z",
+                  "updatedAt": "2026-10-22T01:57:21.000Z",
+                  "uid": "35240-f73091ae-ceb4-4677-afdb-cc5a569fd567"
+                }
+              ],
+              "id": "73e2d398-4915-4282-b287-61fdf2669570",
+              "createdAt": "2026-10-22T01:57:21.000Z",
+              "updatedAt": "2026-10-22T01:57:21.000Z",
+              "uid": "35240-73e2d398-4915-4282-b287-61fdf2669570"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "01fa1220-cba8-46c9-91af-d7f657649e96",
+          "createdAt": "2026-10-22T01:57:21.000Z",
+          "updatedAt": "2026-10-22T01:57:21.000Z",
+          "uid": "35240-01fa1220-cba8-46c9-91af-d7f657649e96"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://your-domain.talentlms.com",
-      "key": "baseUrl"
+      "id": "c0b158f1-8e3b-4d60-84dd-b86faf71c9b0",
+      "createdAt": "2026-10-22T01:57:21.000Z",
+      "updatedAt": "2026-10-22T01:57:21.000Z",
+      "uid": "35240-c0b158f1-8e3b-4d60-84dd-b86faf71c9b0"
     }
   ],
   "auth": {
@@ -1027,25 +1018,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-API-Key"
+        "value": "X-API-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ebdb2905-eddb-47ee-9e16-0d2b418a92bb",
-    "name": "TalentLMS Public Batch Actions Group API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly. It is organized around Representational State Transfer (REST) and is built to leverage standard HTTP features such as HTTP authentication and HTTP response codes, ensuring seamless integration. All API responses, including error messages, are consistently formatted in JSON for easy parsing and handling.\n\nIf your TalentLMS domain is called “samples”, then the API endpoint for your domain is [<code>https://samples.talentlms.com/api/v2</code>](https://samples.talentlms.com/api).\n\nThe current version of the API consumes data – information about users, courses, categories, groups, branches, and general details about your domain. Apart from that, via the API you can log in / sign up a user in your domain, enroll a user in a course, and much more. Please make sure, that you are accessing the URLs below, under HTTPs connections, otherwise, you will receive an error.\n\n## 🚀 **Getting Started Guide**\n\nTo start using the TalentLMS API, you must first [enable the API and generate a valid API](https://help.talentlms.com/hc/en-us/articles/9651527213468-Can-I-integrate-my-site-with-TalentLMS-Do-you-offer-an-API) key from the portal's settings (Account & Settings > Integrations > API).\n\n**Keep in mind:**\n\n- The pagination limit of each request is 100.\n    \n- The API has rate and usage limits (e.g. 2000 requests per hour).\n    \n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key (All calls must have an Accept: application/json header value).\n    \n- In each request you must add the desired version of the API by adding the header option with the key `X-API-Version` and value (the format of the version must be `YYYY-MM-DD`).\n    \n## 🔐 Authentication\n\nAll of the requests require authentication. Our API uses the `API Key` authorization method, with key `X-API-Key` and value `your_api_key`. You can always fill these fields in the global variables or create an environment and insert them there.\n\n### ⛔️ Authentication error response\n\nYou will receive an HTTP 401 Unauthorized response code if the API key is missing, incorrectly formatted, or invalid.\n\n### ✅ API Responses\n\nTalentLMS API uses HTTP response codes to indicate the success or failure of requests. Specifically, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided arguments (e.g. instead of an integer a string is supplied), and the 500 error code indicates an internal TalentLMS error. Please be aware that you will receive an error too, in case you try to access an endpoint via non HTTPs connection.\n\nAll errors return JSON consisting of a type (invalid_request_error or api_error) and a message describing the error.\n\n| **Code** | **Description** |\n| --- | --- |\n| 200 | The request was executed properly and a JSON response is returned. |\n| 204 | No content, and the operation was executed successfully. |\n| 400 | A required parameter is missing or an invalid type (e.g. a string) was supplied instead of an integer. |\n| 401 | Invalid API key provided. |\n| 403 | API is not enabled for the specified domain or the domain is currently inactive. |\n| 404 | The requested resource (e.g. user) does not exist. |\n| 422 | Malformed response. |\n| 429 | The API request rate limit has been exceeded. |\n| 500 | Internal server error. |\n\n### 🛑 Rate Limits\n\nRate limits represent the maximum number of API requests that are permitted to be made  \nper hour. These limits depend on your subscription plan and are as follows:\n\n| **Plan** | **Limit** |\n| --- | --- |\n| Core | 2.000 |\n| Grow | 10.000 |\n| Pro | 10.000 |\n| Small | 2.000 |\n| Basic | 2.000 |\n| Plus | 10.000 |\n| Premium | 10.000 |\n| Custom | Contact us so we can create a plan that fits your needs |\n\nRegardless of the total API requests per hour provisioned per customer, each customer's API requests should not exceed the rate of 200 API calls per 5 seconds. The following headers are included in API responses to help manage rate limits:\n\n- **`X-RateLimit-Limit`**: The maximum number of requests allowed in the current time window\n    \n- **`X-RateLimit-Remaining`**: The number of requests left in the current window before hitting the limit\n    \n### 📄 Pagination\n\nOur API supports pagination, splitting responses into size-customizable chunks of up to 100 items per request. You can navigate to the first, last, previous, or next page. The endpoints that support pagination return a list formatted as shown below:\n\n``` json\n{\n        \"self\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"first\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"last\": \"https://example.talentlms.com/api/v2/users?page[number]=4&page[size]=10\",\n        \"prev\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"next\": \"https://example.talentlms.com/api/v2/users?page[number]=2&page[size]=10\"\n}\n\n ```",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://your-domain.talentlms.com"
     }
-  }
+  ]
 }

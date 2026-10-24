@@ -1,986 +1,1049 @@
 {
+  "info": {
+    "_postman_id": "7b1797b2-88fe-4d57-9781-6018ea1765a8",
+    "name": "TalentLMS Public Course API",
+    "description": "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:57:14.000Z",
+    "updatedAt": "2026-10-22T01:57:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7b1797b2-88fe-4d57-9781-6018ea1765a8"
+  },
   "item": [
     {
-      "id": "29565c31-0b75-40e3-8006-22daf9bfeae0",
-      "name": "Course",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "ffc009f1-90b0-413a-8d81-edcc3ff395c9",
-          "name": "List all courses",
-          "request": {
-            "name": "List all courses",
-            "description": {
-              "content": "### List all courses\n\nRetrieves a paginated list of all courses in your TalentLMS account. Upon a successful request, the API returns a JSON response containing course objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets. You can optionally filter the response using course custom fields.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "courses"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "c0204595-acf8-45a6-90a7-97e3ca223eea",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "courses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "courses",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ab96d1ee-37b5-46f9-b96b-7e66d545a155",
-          "name": "Create course",
-          "request": {
-            "name": "Create course",
-            "description": {
-              "content": "### Create course\n\nCreates a new course in your TalentLMS account. To successfully create a course, provide the required attributes (such as the course name, code, and other relevant details) in the request body. If the request is valid, the API creates the course and returns the newly created course object, including its unique ID. This endpoint allows you to define course properties such as description, category, pricing, visibility, and other configuration settings depending on your account setup.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "courses"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "25f53faf-3ed6-4ffd-be61-2567395171bb",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "courses"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"code\": \"<string>\",\n  \"description\": \"<string>\",\n  \"category_id\": \"<integer>\",\n  \"price\": \"<float>\",\n  \"capacity\": \"<integer>\",\n  \"level\": \"<integer>\",\n  \"time_limit\": \"<integer>\",\n  \"start_datetime\": \"<timestamp>\",\n  \"expiration_datetime\": \"<timestamp>\",\n  \"is_active\": \"<boolean>\",\n  \"custom_fields\": {\n    \"<custom_field_name>\": \"<custom_field_value>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "11caf7b6-6dfd-4b02-8e5d-1888b47da9cd",
-          "name": "Get a course",
-          "request": {
-            "name": "Get a course",
-            "description": {
-              "content": "### Get a course\n\nRetrieves the full details of a specific course. To successfully fetch a course, include the course’s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API returns detailed information about the course, including its metadata, settings, and related attributes.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "courses",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a6058fda-d0f9-4955-b2f8-bd5ff24820f5",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "courses",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b6dc4610-b76d-4bd2-b777-a94d53356ed2",
-          "name": "Delete a course",
-          "request": {
-            "name": "Delete a course",
-            "description": {
-              "content": "### Delete a course\n\nPermanently deletes a specific course from your TalentLMS account. To successfully remove a course, include the course’s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API deletes the course and returns a 204 No Content response upon success.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "courses",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5872bde9-e7e5-49fe-a9f8-dd8a0e931b24",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "courses",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1d71275f-5959-479f-9d35-10a10156cc0b",
-          "name": "Enroll user to course",
-          "request": {
-            "name": "Enroll user to course",
-            "description": {
-              "content": "### Enroll user to course\n\nEnrolls a user into a specific course. To create an enrollment, provide the user’s unique ID using the user_id attribute and the course’s unique **I**D using the course_id attribute in the request body. If the request is valid and both the user and course exist, the API creates the enrollment and returns the enrollment details in the response.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "enrollments"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "c9f305c9-9ecc-4e31-afd3-61303e9cf53d",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "enrollments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "disabled": false,
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"course_id\": \"<integer>\",\n  \"user_id\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "902ed1c3-f94d-4353-8c6c-3b7fe4a36654",
-          "name": "Delete a user from a course",
-          "request": {
-            "name": "Delete a user from a course",
-            "description": {
-              "content": "### Delete a user from a course\n\nRemoves a user’s enrollment from a specific course. To successfully unenroll a user, provide the user’s unique ID using the `user_id` attribute and the course’s unique ID using the `course_id` attribute. If the request is valid and the enrollment exists, the API deletes the enrollment and removes the user’s access to the course.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "enrollments"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "67a6b8ee-3e96-49f6-a374-ddfff5b4df71",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "enrollments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "disabled": false,
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f0b96fe5-bc08-4c6b-b1f6-1d3d8e5793b5",
-          "name": "Goto Course",
-          "request": {
-            "name": "Goto Course",
-            "description": {
-              "content": "### Goto Course\n\nProvided the course & user ID a goto url is returned for accessing the course with the specified ID. Optionally, the user is able to provide the encoded redirection urls when a user logs out or completes the course.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "courses",
-                ":course_id",
-                "users",
-                ":user_id",
-                "goto"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "logout_redirect",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "course_completed_redirect",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "78aea5cc-4375-4e25-b1d2-2ae0b3a69211",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "courses",
-                    ":course_id",
-                    "users",
-                    ":user_id",
-                    "goto"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": ":id",
+                  "item": [
                     {
-                      "key": "logout_redirect",
-                      "value": "<base64_encoded_url>"
+                      "name": "purchase",
+                      "item": [
+                        {
+                          "name": "Purchase a course",
+                          "id": "78e989c9-5f01-4534-9dfa-ba2028567c4e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "X-API-Version",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/courses/:id/purchase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "courses",
+                                ":id",
+                                "purchase"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3f3088da-fcab-4210-bd23-8aa21307182f",
+                                  "key": "id"
+                                }
+                              ]
+                            },
+                            "description": "### Purchase a course\n\nProvided the course ID in the endpoint's path and the user ID in the request's body a course can be purchased for this specific user. Optionally, you can specify the redirection url if the purchase is cancelled or succeeded and you can also provide a coupon key."
+                          },
+                          "response": [
+                            {
+                              "id": "eaf194cb-d409-47c6-bc8b-7a2848029ae4",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "X-API-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-API-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/courses/:id/purchase",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "courses",
+                                    ":id",
+                                    "purchase"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "",
+                              "createdAt": "2026-10-22T01:57:15.000Z",
+                              "updatedAt": "2026-10-22T01:57:15.000Z",
+                              "uid": "35240-eaf194cb-d409-47c6-bc8b-7a2848029ae4"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:57:15.000Z",
+                          "updatedAt": "2026-10-22T01:57:15.000Z",
+                          "uid": "35240-78e989c9-5f01-4534-9dfa-ba2028567c4e"
+                        }
+                      ],
+                      "id": "fe2b5d9d-ed85-4710-a616-22ee8766028b",
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-fe2b5d9d-ed85-4710-a616-22ee8766028b"
                     },
                     {
-                      "key": "course_completed_redirect",
-                      "value": "<base64_encoded_url>"
+                      "name": "Get a course",
+                      "id": "1ff16e14-57da-466e-a898-8909af9c6626",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/courses/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "courses",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "14dadd8d-acc3-4e89-bb3d-3622f1656265",
+                              "key": "id"
+                            }
+                          ]
+                        },
+                        "description": "### Get a course\n\nRetrieves the full details of a specific course. To successfully fetch a course, include the course\u2019s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API returns detailed information about the course, including its metadata, settings, and related attributes."
+                      },
+                      "response": [
+                        {
+                          "id": "7fc9563e-ec99-4bbd-879f-917699a2f07e",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-API-Version",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/courses/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "courses",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:57:15.000Z",
+                          "updatedAt": "2026-10-22T01:57:15.000Z",
+                          "uid": "35240-7fc9563e-ec99-4bbd-879f-917699a2f07e"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-1ff16e14-57da-466e-a898-8909af9c6626"
+                    },
+                    {
+                      "name": "Delete a course",
+                      "id": "e3128eb3-7025-4b7e-a637-2ee218dbdd19",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/courses/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "courses",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9cfb2e1c-f533-4952-967c-d8eccb63ca3d",
+                              "key": "id"
+                            }
+                          ]
+                        },
+                        "description": "### Delete a course\n\nPermanently deletes a specific course from your TalentLMS account. To successfully remove a course, include the course\u2019s unique ID as a path parameter in the request URL. If the request is valid and the course exists, the API deletes the course and returns a 204 No Content response upon success."
+                      },
+                      "response": [
+                        {
+                          "id": "36560aaf-e889-4615-b2a5-c634421e27b0",
+                          "name": "Successful response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "X-API-Version",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/courses/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "courses",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "",
+                          "createdAt": "2026-10-22T01:57:15.000Z",
+                          "updatedAt": "2026-10-22T01:57:15.000Z",
+                          "uid": "35240-36560aaf-e889-4615-b2a5-c634421e27b0"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-e3128eb3-7025-4b7e-a637-2ee218dbdd19"
                     }
                   ],
-                  "variable": []
+                  "id": "dea8cb97-c555-4fd2-b021-beeb693145fb",
+                  "createdAt": "2026-10-22T01:57:15.000Z",
+                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                  "uid": "35240-dea8cb97-c555-4fd2-b021-beeb693145fb"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "810b6c71-b1a7-427b-9268-fe18af56dd26",
-          "name": "Get course custom fields",
-          "request": {
-            "name": "Get course custom fields",
-            "description": {
-              "content": "### Get course custom fields\n\nRetrieves a paginated list of all custom fields defined for courses. Upon a successful request, the API returns a JSON response containing the available custom course fields, including their configuration details and metadata. Results are returned in a paginated format to support efficient data retrieval.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "course-fields"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b0a034fe-04f9-40bd-9d5d-9f098ac76e86",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "course-fields"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c5d5ba0b-f0af-4439-8ec3-56eea452362e",
-          "name": "Purchase a course",
-          "request": {
-            "name": "Purchase a course",
-            "description": {
-              "content": "### Purchase a course\n\nProvided the course ID in the endpoint's path and the user ID in the request's body a course can be purchased for this specific user. Optionally, you can specify the redirection url if the purchase is cancelled or succeeded and you can also provide a coupon key.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "courses",
-                ":id",
-                "purchase"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "key": "X-API-Version",
-                "value": "<string>",
-                "description": ""
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "5fa0e345-c7e4-4397-8931-3c999a56d6d8",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "courses",
-                    ":id",
-                    "purchase"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "key": "X-API-Version",
-                    "value": "{{apiVersion}}",
-                    "description": ""
-                  },
-                  {
-                    "disabled": false,
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"user_id\": \"<integer>\",\n  \"cancel_path\": \"<string>\",\n  \"return_path\": \"<string>\",\n  \"coupon\": \"<string|null>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                  "name": ":course_id",
+                  "item": [
+                    {
+                      "name": "users",
+                      "item": [
+                        {
+                          "name": ":user_id",
+                          "item": [
+                            {
+                              "name": "goto",
+                              "item": [
+                                {
+                                  "name": "Goto Course",
+                                  "id": "a3493f58-2014-49a7-a02d-43ade0afdacc",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "X-API-Version",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v2/courses/:course_id/users/:user_id/goto?logout_redirect=<string>&course_completed_redirect=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v2",
+                                        "courses",
+                                        ":course_id",
+                                        "users",
+                                        ":user_id",
+                                        "goto"
+                                      ],
+                                      "query": [
+                                        {
+                                          "key": "logout_redirect",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "course_completed_redirect",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "5de655fb-2652-4880-8898-a684d66a0be7",
+                                          "key": "course_id"
+                                        },
+                                        {
+                                          "id": "4266f1da-7ded-44d0-baad-33ec140ad986",
+                                          "key": "user_id"
+                                        }
+                                      ]
+                                    },
+                                    "description": "### Goto Course\n\nProvided the course & user ID a goto url is returned for accessing the course with the specified ID. Optionally, the user is able to provide the encoded redirection urls when a user logs out or completes the course."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "cf64ee59-9d3b-4b7a-9bd6-bd694582936e",
+                                      "name": "Successful response",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "X-API-Version",
+                                            "value": "<string>"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "X-API-Key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/api/v2/courses/:course_id/users/:user_id/goto?logout_redirect=<string>&course_completed_redirect=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "api",
+                                            "v2",
+                                            "courses",
+                                            ":course_id",
+                                            "users",
+                                            ":user_id",
+                                            "goto"
+                                          ],
+                                          "query": [
+                                            {
+                                              "key": "logout_redirect",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "course_completed_redirect",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "course_id"
+                                            },
+                                            {
+                                              "key": "user_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "",
+                                      "createdAt": "2026-10-22T01:57:15.000Z",
+                                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                                      "uid": "35240-cf64ee59-9d3b-4b7a-9bd6-bd694582936e"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-22T01:57:15.000Z",
+                                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                                  "uid": "35240-a3493f58-2014-49a7-a02d-43ade0afdacc"
+                                }
+                              ],
+                              "id": "9c10abb7-832e-4486-b18a-fc9e006115f2",
+                              "createdAt": "2026-10-22T01:57:15.000Z",
+                              "updatedAt": "2026-10-22T01:57:15.000Z",
+                              "uid": "35240-9c10abb7-832e-4486-b18a-fc9e006115f2"
+                            }
+                          ],
+                          "id": "d9d1e6b4-38da-4b32-820f-1bc8f7c667f7",
+                          "createdAt": "2026-10-22T01:57:15.000Z",
+                          "updatedAt": "2026-10-22T01:57:15.000Z",
+                          "uid": "35240-d9d1e6b4-38da-4b32-820f-1bc8f7c667f7"
+                        }
+                      ],
+                      "id": "07c8932d-19f4-49df-b414-f7c5119de145",
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-07c8932d-19f4-49df-b414-f7c5119de145"
                     }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  ],
+                  "id": "de29f5ce-946c-462d-8a56-17eefd966838",
+                  "createdAt": "2026-10-22T01:57:15.000Z",
+                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                  "uid": "35240-de29f5ce-946c-462d-8a56-17eefd966838"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List all courses",
+                  "id": "6827fee0-b4ec-4455-b7db-0f73c15ca6ca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/courses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "courses"
+                      ]
+                    },
+                    "description": "### List all courses\n\nRetrieves a paginated list of all courses in your TalentLMS account. Upon a successful request, the API returns a JSON response containing course objects, including their associated metadata and configuration details. Results are delivered in a paginated format to ensure efficient handling of large datasets. You can optionally filter the response using course custom fields."
+                  },
+                  "response": [
+                    {
+                      "id": "000135f3-02fa-457e-b750-987d14e1e6df",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/courses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "courses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-000135f3-02fa-457e-b750-987d14e1e6df"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:15.000Z",
+                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                  "uid": "35240-6827fee0-b4ec-4455-b7db-0f73c15ca6ca"
+                },
+                {
+                  "name": "Create course",
+                  "id": "bd4da23a-39de-47ad-89f5-b7b963ee94e8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/courses",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "courses"
+                      ]
+                    },
+                    "description": "### Create course\n\nCreates a new course in your TalentLMS account. To successfully create a course, provide the required attributes (such as the course name, code, and other relevant details) in the request body. If the request is valid, the API creates the course and returns the newly created course object, including its unique ID. This endpoint allows you to define course properties such as description, category, pricing, visibility, and other configuration settings depending on your account setup."
+                  },
+                  "response": [
+                    {
+                      "id": "4b3e6a81-9101-478b-b14a-27cd97c24499",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/courses",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "courses"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-4b3e6a81-9101-478b-b14a-27cd97c24499"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:15.000Z",
+                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                  "uid": "35240-bd4da23a-39de-47ad-89f5-b7b963ee94e8"
                 }
               ],
-              "body": "\"\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "4229c033-89a5-4c1e-90e0-1fd728073a7d",
+              "createdAt": "2026-10-22T01:57:15.000Z",
+              "updatedAt": "2026-10-22T01:57:15.000Z",
+              "uid": "35240-4229c033-89a5-4c1e-90e0-1fd728073a7d"
+            },
+            {
+              "name": "enrollments",
+              "item": [
+                {
+                  "name": "Enroll user to course",
+                  "id": "266ec00b-0fac-4c19-8c0c-31a820c81a8b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/enrollments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "enrollments"
+                      ]
+                    },
+                    "description": "### Enroll user to course\n\nEnrolls a user into a specific course. To create an enrollment, provide the user\u2019s unique ID using the user_id attribute and the course\u2019s unique **I**D using the course_id attribute in the request body. If the request is valid and both the user and course exist, the API creates the enrollment and returns the enrollment details in the response."
+                  },
+                  "response": [
+                    {
+                      "id": "20f4d0a8-4df2-45af-b05c-3269b4ba9ed1",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/enrollments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "enrollments"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-20f4d0a8-4df2-45af-b05c-3269b4ba9ed1"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:15.000Z",
+                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                  "uid": "35240-266ec00b-0fac-4c19-8c0c-31a820c81a8b"
+                },
+                {
+                  "name": "Delete a user from a course",
+                  "id": "d5413686-3532-488c-9b21-1ce3e8b41b71",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/enrollments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "enrollments"
+                      ]
+                    },
+                    "description": "### Delete a user from a course\n\nRemoves a user\u2019s enrollment from a specific course. To successfully unenroll a user, provide the user\u2019s unique ID using the `user_id` attribute and the course\u2019s unique ID using the `course_id` attribute. If the request is valid and the enrollment exists, the API deletes the enrollment and removes the user\u2019s access to the course."
+                  },
+                  "response": [
+                    {
+                      "id": "da33f881-fb57-4133-bdde-e3b38c2d929e",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/enrollments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "enrollments"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-da33f881-fb57-4133-bdde-e3b38c2d929e"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:15.000Z",
+                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                  "uid": "35240-d5413686-3532-488c-9b21-1ce3e8b41b71"
+                }
+              ],
+              "id": "26a53d0d-6cac-4cbb-8c5a-cbb0664f7a7d",
+              "createdAt": "2026-10-22T01:57:15.000Z",
+              "updatedAt": "2026-10-22T01:57:15.000Z",
+              "uid": "35240-26a53d0d-6cac-4cbb-8c5a-cbb0664f7a7d"
+            },
+            {
+              "name": "course-fields",
+              "item": [
+                {
+                  "name": "Get course custom fields",
+                  "id": "39e88a76-4806-43b1-b06c-c01822e65baf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-API-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/course-fields",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "course-fields"
+                      ]
+                    },
+                    "description": "### Get course custom fields\n\nRetrieves a paginated list of all custom fields defined for courses. Upon a successful request, the API returns a JSON response containing the available custom course fields, including their configuration details and metadata. Results are returned in a paginated format to support efficient data retrieval."
+                  },
+                  "response": [
+                    {
+                      "id": "114cae81-4840-444e-a7c8-a10dd881f663",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "X-API-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/course-fields",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "course-fields"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "",
+                      "createdAt": "2026-10-22T01:57:15.000Z",
+                      "updatedAt": "2026-10-22T01:57:15.000Z",
+                      "uid": "35240-114cae81-4840-444e-a7c8-a10dd881f663"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:57:15.000Z",
+                  "updatedAt": "2026-10-22T01:57:15.000Z",
+                  "uid": "35240-39e88a76-4806-43b1-b06c-c01822e65baf"
+                }
+              ],
+              "id": "784dbb34-aa22-490e-9afd-d7b5b1d56046",
+              "createdAt": "2026-10-22T01:57:15.000Z",
+              "updatedAt": "2026-10-22T01:57:15.000Z",
+              "uid": "35240-784dbb34-aa22-490e-9afd-d7b5b1d56046"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9b611e75-23df-4287-a87d-c02b4298c198",
+          "createdAt": "2026-10-22T01:57:15.000Z",
+          "updatedAt": "2026-10-22T01:57:15.000Z",
+          "uid": "35240-9b611e75-23df-4287-a87d-c02b4298c198"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://your-domain.talentlms.com",
-      "key": "baseUrl"
+      "id": "5b538399-ca88-48db-9913-611b81255c3f",
+      "createdAt": "2026-10-22T01:57:15.000Z",
+      "updatedAt": "2026-10-22T01:57:15.000Z",
+      "uid": "35240-5b538399-ca88-48db-9913-611b81255c3f"
     }
   ],
   "auth": {
@@ -988,25 +1051,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-API-Key"
+        "value": "X-API-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ce0aa39a-325c-4bda-9ca6-e54e870824fc",
-    "name": "TalentLMS Public Batch Actions Course API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "TalentLMS offers a range of API endpoints and resources designed to integrate TalentLMS with your internal systems seamlessly. It is organized around Representational State Transfer (REST) and is built to leverage standard HTTP features such as HTTP authentication and HTTP response codes, ensuring seamless integration. All API responses, including error messages, are consistently formatted in JSON for easy parsing and handling.\n\nIf your TalentLMS domain is called “samples”, then the API endpoint for your domain is [<code>https://samples.talentlms.com/api/v2</code>](https://samples.talentlms.com/api).\n\nThe current version of the API consumes data – information about users, courses, categories, groups, branches, and general details about your domain. Apart from that, via the API you can log in / sign up a user in your domain, enroll a user in a course, and much more. Please make sure, that you are accessing the URLs below, under HTTPs connections, otherwise, you will receive an error.\n\n## 🚀 **Getting Started Guide**\n\nTo start using the TalentLMS API, you must first [enable the API and generate a valid API](https://help.talentlms.com/hc/en-us/articles/9651527213468-Can-I-integrate-my-site-with-TalentLMS-Do-you-offer-an-API) key from the portal's settings (Account & Settings > Integrations > API).\n\n**Keep in mind:**\n\n- The pagination limit of each request is 100.\n    \n- The API has rate and usage limits (e.g. 2000 requests per hour).\n    \n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key (All calls must have an Accept: application/json header value).\n    \n- In each request you must add the desired version of the API by adding the header option with the key `X-API-Version` and value (the format of the version must be `YYYY-MM-DD`).\n    \n## 🔐 Authentication\n\nAll of the requests require authentication. Our API uses the `API Key` authorization method, with key `X-API-Key` and value `your_api_key`. You can always fill these fields in the global variables or create an environment and insert them there.\n\n### ⛔️ Authentication error response\n\nYou will receive an HTTP 401 Unauthorized response code if the API key is missing, incorrectly formatted, or invalid.\n\n### ✅ API Responses\n\nTalentLMS API uses HTTP response codes to indicate the success or failure of requests. Specifically, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided arguments (e.g. instead of an integer a string is supplied), and the 500 error code indicates an internal TalentLMS error. Please be aware that you will receive an error too, in case you try to access an endpoint via non HTTPs connection.\n\nAll errors return JSON consisting of a type (invalid_request_error or api_error) and a message describing the error.\n\n| **Code** | **Description** |\n| --- | --- |\n| 200 | The request was executed properly and a JSON response is returned. |\n| 204 | No content, and the operation was executed successfully. |\n| 400 | A required parameter is missing or an invalid type (e.g. a string) was supplied instead of an integer. |\n| 401 | Invalid API key provided. |\n| 403 | API is not enabled for the specified domain or the domain is currently inactive. |\n| 404 | The requested resource (e.g. user) does not exist. |\n| 422 | Malformed response. |\n| 429 | The API request rate limit has been exceeded. |\n| 500 | Internal server error. |\n\n### 🛑 Rate Limits\n\nRate limits represent the maximum number of API requests that are permitted to be made  \nper hour. These limits depend on your subscription plan and are as follows:\n\n| **Plan** | **Limit** |\n| --- | --- |\n| Core | 2.000 |\n| Grow | 10.000 |\n| Pro | 10.000 |\n| Small | 2.000 |\n| Basic | 2.000 |\n| Plus | 10.000 |\n| Premium | 10.000 |\n| Custom | Contact us so we can create a plan that fits your needs |\n\nRegardless of the total API requests per hour provisioned per customer, each customer's API requests should not exceed the rate of 200 API calls per 5 seconds. The following headers are included in API responses to help manage rate limits:\n\n- **`X-RateLimit-Limit`**: The maximum number of requests allowed in the current time window\n    \n- **`X-RateLimit-Remaining`**: The number of requests left in the current window before hitting the limit\n    \n### 📄 Pagination\n\nOur API supports pagination, splitting responses into size-customizable chunks of up to 100 items per request. You can navigate to the first, last, previous, or next page. The endpoints that support pagination return a list formatted as shown below:\n\n``` json\n{\n        \"self\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"first\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"last\": \"https://example.talentlms.com/api/v2/users?page[number]=4&page[size]=10\",\n        \"prev\": \"https://example.talentlms.com/api/v2/users?page[number]=1&page[size]=10\",\n        \"next\": \"https://example.talentlms.com/api/v2/users?page[number]=2&page[size]=10\"\n}\n\n ```",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://your-domain.talentlms.com"
     }
-  }
+  ]
 }
