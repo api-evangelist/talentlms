@@ -64,61 +64,168 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-TalentLMS is a cloud-based learning management system (LMS) with a REST API for managing users, courses, categories, branches, groups, and enrollments, as well as accessing completion and assessment report data.
+TalentLMS is a cloud-based learning management system (LMS) with a REST API for managing users, courses, categories, branches, groups, and enrollments, as well as accessing completion and assessment report data. The API supports over 50 endpoints covering user and course lifecycle management, group and branch administration, and retrieval of test and survey results. Authentication uses API key-based HTTP Basic Auth on V1 and header-based API keys on V2. TalentLMS V2 introduces versioned requests, clear rate-limit response headers, and a dedicated developer hub.
 
-## API
+**Areas:** LMS · E-Learning · Training · Courses · User · Enrollment · Education · Human Resources · Cloud
 
-- **Developer Hub:** https://developers.talentlms.io/
-- **API V2 Docs:** https://help.talentlms.com/hc/en-us/articles/24874457011356-TalentLMS-API-V2
-- **Postman Collection:** https://documenter.getpostman.com/view/31867199/2sAY548Kou
-- **Base URL (V2):** `https://{domain}.talentlms.com/api/v2`
+## TalentLMS on APIs.io
 
-## Authentication
+Everything profiled for TalentLMS is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/talentlms/](https://apis.io/providers/talentlms/)** — or go straight to one of the APIs or properties below.
 
-TalentLMS uses API key authentication:
+### APIs (12)
 
-- **V1:** HTTP Basic Auth with the API key as the username and an empty password.
-- **V2:** Header-based authentication using `X-API-Key: your_api_key` plus `X-API-Version: YYYY-MM-DD`.
+- [TalentLMS API](https://apis.io/apis/talentlms/talentlms-api/) — REST API for TalentLMS providing programmatic access to users, courses, categories, branches, groups, enrollments, and reporting data including test and…
+- [TalentLMS Batch Actions API](https://apis.io/apis/talentlms/talentlms-batch-actions-api/) — This section introduces endpoints that perform bulk actions. After invoking any of the below endpoints, their response includes a background task ID.. You…
+- [TalentLMS Branch API](https://apis.io/apis/talentlms/talentlms-branch-api/) — The Branch API from TalentLMS — 5 operation(s) for branch.
+- [TalentLMS Category API](https://apis.io/apis/talentlms/talentlms-category-api/) — The Category API from TalentLMS — 3 operation(s) for category.
+- [TalentLMS Course API](https://apis.io/apis/talentlms/talentlms-course-api/) — The Course API from TalentLMS — 6 operation(s) for course.
+- [TalentLMS Group API](https://apis.io/apis/talentlms/talentlms-group-api/) — The Group API from TalentLMS — 5 operation(s) for group.
+- [TalentLMS Learning Paths API](https://apis.io/apis/talentlms/talentlms-learning-paths-api/) — The Learning Paths API from TalentLMS — 3 operation(s) for learning paths.
+- [TalentLMS Portal API](https://apis.io/apis/talentlms/talentlms-portal-api/) — The Portal API from TalentLMS — 2 operation(s) for portal.
+- [TalentLMS Task API](https://apis.io/apis/talentlms/talentlms-task-api/) — The Task API from TalentLMS — 1 operation(s) for task.
+- [TalentLMS Timeline API](https://apis.io/apis/talentlms/talentlms-timeline-api/) — The Timeline API from TalentLMS — 1 operation(s) for timeline.
+- [TalentLMS Unit API](https://apis.io/apis/talentlms/talentlms-unit-api/) — The Unit API from TalentLMS — 2 operation(s) for unit.
+- [TalentLMS User API](https://apis.io/apis/talentlms/talentlms-user-api/) — The User API from TalentLMS — 16 operation(s) for user.
 
-API keys are generated in Account & Settings > Integrations > API within the TalentLMS admin portal.
+### Published properties
 
-## Key Resources
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Users
-- Courses
-- Categories
-- Branches
-- Groups
-- Enrollments
-- Reports (completion, assessment, test results, surveys)
+#### Agentic access (1)
 
-## Rate Limits
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **V2:** 200 calls per 5 seconds; 2,000 calls per hour. Rate limit headers included in every response.
-- **V1:** ~50 calls per hour (free tier); no rate limit headers.
+- [Talentlms Agentic Access](https://apis.io/agentic-access/talentlms/talentlms-agentic-access/)
 
-## Pricing
+#### JSON Schema (12)
 
-Plans are based on monthly active users (users who log in during the billing period):
+The data models the API reads and writes.
 
-| Plan       | Price (yearly) | Users    |
-|------------|---------------|----------|
-| Free       | $0/month      | Up to 5  |
-| Core       | $119/month    | Up to 40 |
-| Grow       | $229/month    | Up to 70 |
-| Pro        | $449/month    | Up to 100 (+$6/extra user) |
-| Enterprise | Custom        | 1,000+   |
+- [getuserbranches-response-200](https://apis.io/schemas/talentlms/getuserbranches-response-200/)
+- [getuserbyid-response-200](https://apis.io/schemas/talentlms/getuserbyid-response-200/)
+- [getusercertificates-response-200](https://apis.io/schemas/talentlms/getusercertificates-response-200/)
+- [getusercourses-response-200](https://apis.io/schemas/talentlms/getusercourses-response-200/)
+- [getusergroups-response-200](https://apis.io/schemas/talentlms/getusergroups-response-200/)
+- [getuserresources-response-200](https://apis.io/schemas/talentlms/getuserresources-response-200/)
+- [GroupCourseItem](https://apis.io/schemas/talentlms/groupcourseitem/)
+- [PaginationLinks](https://apis.io/schemas/talentlms/paginationlinks/)
+- [PaginationMeta](https://apis.io/schemas/talentlms/paginationmeta/)
+- [UserGamification](https://apis.io/schemas/talentlms/usergamification/)
+- [UserGamificationBadge](https://apis.io/schemas/talentlms/usergamificationbadge/)
+- [UserListItem](https://apis.io/schemas/talentlms/userlistitem/)
 
-Annual billing provides a 20% discount.
+#### JSON-LD (1)
 
-## Links
+Linked-data contexts for the provider's vocabulary.
+
+- [Talentlms Context](https://apis.io/jsonld/talentlms/talentlms/)
+
+#### Collections (11)
+
+Postman and Open Collection request collections.
+
+- [TalentLMS Public Batch Actions API](https://apis.io/collections/talentlms/open-talentlms-batch-actions-api/)
+- [TalentLMS Public Batch Actions Branch API](https://apis.io/collections/talentlms/open-talentlms-branch-api/)
+- [TalentLMS Public Batch Actions Category API](https://apis.io/collections/talentlms/open-talentlms-category-api/)
+- [TalentLMS Public Batch Actions Course API](https://apis.io/collections/talentlms/open-talentlms-course-api/)
+- [TalentLMS Public Batch Actions Group API](https://apis.io/collections/talentlms/open-talentlms-group-api/)
+- [TalentLMS Public Batch Actions Learning Paths API](https://apis.io/collections/talentlms/open-talentlms-learning-paths-api/)
+- [TalentLMS Public Batch Actions Portal API](https://apis.io/collections/talentlms/open-talentlms-portal-api/)
+- [TalentLMS Public Batch Actions Task API](https://apis.io/collections/talentlms/open-talentlms-task-api/)
+- [TalentLMS Public Batch Actions Timeline API](https://apis.io/collections/talentlms/open-talentlms-timeline-api/)
+- [TalentLMS Public Batch Actions Unit API](https://apis.io/collections/talentlms/open-talentlms-unit-api/)
+- [TalentLMS Public Batch Actions User API](https://apis.io/collections/talentlms/open-talentlms-user-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [TalentLMS — jsonschema rules](https://apis.io/rules/talentlms/talentlms-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Talentlms Authentication](https://apis.io/security/talentlms/talentlms-authentication/)
+- [Talentlms Domain Security](https://apis.io/security/talentlms/talentlms-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Talentlms Plans Pricing](https://apis.io/plans/talentlms/talentlms-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Talentlms Rate Limits](https://apis.io/rate-limits/talentlms/talentlms-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Talentlms Finops](https://apis.io/finops/talentlms/talentlms-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.talentlms.com/)
+- [Documentation](https://help.talentlms.com/hc/en-us/articles/24874457011356-TalentLMS-API-V2)
 - [Pricing](https://www.talentlms.com/pricing)
+- [Support](https://help.talentlms.com/hc/en-us)
 - [Blog](https://www.talentlms.com/blog/)
-- [Support / Help Center](https://help.talentlms.com/hc/en-us)
-- [Release Notes](https://help.talentlms.com/hc/en-us/sections/9593869767452-Product-News)
 
-## APIs.json
+## API Evangelist rating
 
-This repository contains an [APIs.json 0.19](apis.yml) profile for TalentLMS maintained by [Kin Lane](mailto:kin@apievangelist.com) at [API Evangelist](https://apievangelist.com).
+**Kin Score 35.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 48.4 |
+| Contract governance | 9.8 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 42.9 |
+| Access clarity | 25.0 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/talentlms/](https://apis.io/providers/talentlms/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TalentLMS: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/talentlms/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
